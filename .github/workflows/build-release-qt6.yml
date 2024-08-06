@@ -274,8 +274,8 @@ jobs:
       - name: Build app
         run: |
           # Use qt-cmake to automatically use the toolchain
-          qt-cmake .
-          cmake --build .
+          # qt-cmake .
+          # cmake --build .
 
       - name: '⚙️ Set Env'
         shell: bash
