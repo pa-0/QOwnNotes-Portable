@@ -62,7 +62,7 @@ jobs:
 #          echo "${RELEASE_TEXT}" >> $GITHUB_ENV
 #          echo "EOF" >> $GITHUB_ENV
       - name: Printenv
-        run: |
+      - run: |
           echo "VERSION=${VERSION}"
           echo "TAG=${TAG}"
           echo "RELEASE_TEXT=${RELEASE_TEXT}"
