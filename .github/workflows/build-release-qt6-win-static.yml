@@ -2,7 +2,7 @@ name: Build release of QOwnNotes Qt6 Portable
 on:
   push:
     branches:
-       - portable-qt6.7.2
+       - static_qt6.7.2-4
 #      # For testing also on main branch
 #      - main
 #    tags-ignore:
@@ -39,15 +39,15 @@ env:
   CORES: 16
 
 jobs:
-  create_release:
-    name: '🗃️️ Prepare release'
-    permissions:
-      contents: write  # for actions/create-release to create a release
-    runs-on: ubuntu-latest
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-      release_id: ${{ steps.create_release.outputs.id }}
-    steps:
+#  create_release:
+#    name: '🗃️️ Prepare release'
+#    permissions:
+#      contents: write  # for actions/create-release to create a release
+#    runs-on: ubuntu-latest
+#    outputs:
+#      upload_url: ${{ steps.create_release.outputs.upload_url }}
+#      release_id: ${{ steps.create_release.outputs.id }}
+#    steps:
 #      - uses: actions/checkout@v4
 #      - name: Set Env
 #        run: |
@@ -61,12 +61,12 @@ jobs:
 #          echo "RELEASE_TEXT<<EOF" >> $GITHUB_ENV
 #          echo "${RELEASE_TEXT}" >> $GITHUB_ENV
 #          echo "EOF" >> $GITHUB_ENV
-      - name: Printenv
-        run: |
-          echo "VERSION=${VERSION}"
-          echo "TAG=${TAG}"
-          echo "RELEASE_TEXT=${RELEASE_TEXT}"
-          printenv
+#      - name: Printenv
+#        run: |
+#          echo "VERSION=${VERSION}"
+#          echo "TAG=${TAG}"
+#          echo "RELEASE_TEXT=${RELEASE_TEXT}"
+#          printenv
 #      - name: Create release
 #        id: create_release
 #        uses: actions/create-release@v1
@@ -89,7 +89,7 @@ jobs:
  
   build-windows:
     name: '🧊 Windows Server 2019'
-    needs: create_release
+    # needs: create_release
     # https://github.com/pbek/QOwnNotes/issues/2558 error on windows-2022!
     runs-on: windows-2019
     env:
@@ -133,7 +133,7 @@ jobs:
         uses: seanmiddleditch/gha-setup-ninja@master
       
       - name: '🚧 Compile application'
-        run: |
+      - run: |
           $ErrorActionPreference = "OnErrorSilentlyContinue"
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           nmake clean
@@ -201,3 +201,66 @@ jobs:
 #          asset_content_type: text/plain
 
 
+  #
+  # macOS build
+  #
+#  build-macos:
+#    name: '🍎 macOS Monterey'
+#    needs: create_release
+#    runs-on: macos-latest
+#    env:
+#      # Qt 6.5 doesn't support macOS 10 anymore!
+#      QT_VERSION: 6.4.2
+#    continue-on-error: true
+#    steps:
+
+#      - name: '🧰 Checkout'
+#        uses: actions/checkout@v4
+#        with:
+#          submodules: recursive
+
+#      # https://download.qt.io/online/qtsdkrepository/mac_x64/desktop/
+#      - name: '⚙️ Install Qt'
+#        uses: jurplel/install-qt-action@v4
+#        with:
+#          version: ${{env.QT_VERSION}}
+#          modules: ${{env.QT_MODULES}}
+#          aqtversion: '==2.0.0'
+#          cache: true
+#
+#      - name: '⚙️ Set Env'
+#        shell: bash
+#        run: |
+#          export VERSION=$(cat version.h | sed 's/[^0-9,.]//g')
+#          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+#
+#      - name: '⚙️ Printenv'
+#        shell: bash
+#        run: |
+#          echo "VERSION=${VERSION}"
+#          printenv
+#
+#      - name: '🚧 Compile application'
+#        run: |
+#          echo "#define RELEASE \"GitHub Actions\"" > release.h
+#          lrelease QOwnNotes.pro
+#          #ls ${Qt5_Dir}/bin
+#          ${{env.QMAKE}}
+#          make -j ${{env.CORES}}
+#          ../build-systems/github/macos/create-dmg-qt6.sh
+#
+#      - name: '📤 Upload artifact: macOS'
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: QOwnNotes.dmg
+#          path: src/QOwnNotes.dmg
+#
+##      - name: '📤 Release DMG'
+##        uses: actions/upload-release-asset@v1
+##        env:
+##          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+##        with:
+##          upload_url: ${{ needs.create_release.outputs.upload_url }}
+##          asset_path: src/QOwnNotes.dmg
+##          asset_name: QOwnNotes.dmg
+##          asset_content_type: application/x-apple-diskimage
