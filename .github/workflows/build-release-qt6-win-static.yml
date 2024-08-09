@@ -1,0 +1,200 @@
+name: Build release of QOwnNotes Qt6 Portable
+on:
+  push:
+    branches:
+       - static_qt6.7.2-4
+#      # For testing also on main branch
+#      - main
+#    tags-ignore:
+#      - '*'
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-paths
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/workflows/build-release-qt6.yml'
+      - 'build-systems/github/snap.qt6/**'
+  # For testing also on pull requests
+#  pull_request:
+#    paths:
+#      - 'src/**'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: src
+
+#--------------------------------------------------------------------------------
+# Define application name & version
+#--------------------------------------------------------------------------------
+
+env:
+  EXECUTABLE: "QOwnNotes-Portable"
+  APPLICATION: "QOwnNotes-Portable"
+  UNIXNAME: "QOwnNotes-Portable"
+  QMAKE_PROJECT: "QOwnNotes.pro"
+  PUBLISHER: "Patrizio Bekerle"
+  REPO_DIR: "/home/runner/work/QOwnNotes-Portable"
+  QT_MODULES: "qtwebsockets"
+  QMAKE: qmake6
+  CORES: 16
+
+jobs:
+  create_release:
+    name: '🗃️️ Prepare release'
+    permissions:
+      contents: write  # for actions/create-release to create a release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      release_id: ${{ steps.create_release.outputs.id }}
+    steps:
+#      - uses: actions/checkout@v4
+#      - name: Set Env
+#        run: |
+#          export VERSION=$(cat version.h | sed 's/[^0-9,.]//g')
+#          #export TAG=v${VERSION}.${GITHUB_RUN_ID}.${GITHUB_RUN_NUMBER}
+#          export TAG=v${VERSION}
+#          export RELEASE_TEXT=$(grep -Pzo "## ${VERSION}\n(\n|.)+?\n##" ../CHANGELOG.md | sed '$ d')
+#          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+#          echo "TAG=${TAG}" >> $GITHUB_ENV
+#          # add multiline release text
+#          echo "RELEASE_TEXT<<EOF" >> $GITHUB_ENV
+#          echo "${RELEASE_TEXT}" >> $GITHUB_ENV
+#          echo "EOF" >> $GITHUB_ENV
+      - name: Printenv
+        run: |
+          echo "VERSION=${VERSION}"
+          echo "TAG=${TAG}"
+          echo "RELEASE_TEXT=${RELEASE_TEXT}"
+          printenv
+#      - name: Create release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          tag_name: ${{ env.TAG }}
+#          release_name: Release v${{ env.VERSION }}
+#          body: ${{ env.RELEASE_TEXT }}
+#          draft: true
+#          prerelease: false
+
+#--------------------------------------------------------------------------------
+# Workflow jobs (GNU/Linux, macOS & Windows)
+#--------------------------------------------------------------------------------
+
+  #
+  # Windows build
+  #
+  build-windows:
+    name: '🧊 Windows Server 2019'
+    needs: create_release
+    # https://github.com/pbek/QOwnNotes/issues/2558 error on windows-2022!
+    runs-on: windows-2019
+    env:
+      # Qt 6.5 windeployqt doesn't deploy DLLs!
+      QT_VERSION: 6.7.2
+    continue-on-error: true
+    steps:
+
+      - name: '🧰 Checkout'
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install QT Static
+        uses: pa-0/install-qt-static@v6.7.2-3
+        with:
+           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: '⚙️ Set Env'
+        shell: bash
+        run: |
+          export VERSION=$(cat version.h | sed 's/[^0-9,.]//g')
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Make sure MSVC is found
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: '⚙️ Printenv'
+        shell: bash
+        run: |
+          echo "VERSION=${VERSION}"
+          printenv
+
+      - name: Set PATH
+        run: |
+          $env:QMAKEBIN  = Split-Path -Parent (Get-Command qmake).Path
+          $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
+          $env:Path = $env:QMAKEBIN;$env:Path
+          
+      - name: '🚧 Compile application'
+      - uses: seanmiddleditch/gha-setup-ninja@master
+      - run: |
+          $ErrorActionPreference = "OnErrorSilentlyContinue"
+          Write-Output "#define RELEASE ""GitHub Actions""" > release.h
+          nmake clean
+          qmake -config release
+          nmake
+          # Create release directory
+          New-Item -Path '..\release' -ItemType 'Directory'
+          # copy the binary to our release path
+          Copy-Item release\QOwnNotes.exe ..\release
+          # copy Win64 OpenSSL v1.1.1g DLLs to the release path
+          Copy-Item ..\build-systems\github\windows\libcrypto-1_1-x64.dll ..\release
+          Copy-Item ..\build-systems\github\windows\libssl-1_1-x64.dll ..\release
+          # copy unzip application for updater
+          Copy-Item ..\appveyor\unzip.exe ..\release
+          # copy updater script
+          Copy-Item ..\appveyor\update.bat ..\release
+          # copy portable mode launcher to the release path
+          Copy-Item ..\appveyor\QOwnNotesPortable.bat ..\release
+          # copy translation files
+          Copy-Item languages\*.qm ..\release
+          Set-Location ..\release
+          # fetching dependencies of QT app
+          # http://doc.qt.io/qt-5/windows-deployment.html
+          # Bug in Qt 5.14+: https://stackoverflow.com/questions/61045959/windeployqt-error-unable-to-find-the-platform-plugin
+          # windeployqt -core -gui -widgets -sql -svg -network -xml -printsupport -qml -websockets -concurrent QOwnNotes.exe
+          # Create zip archive
+          Get-ChildItem
+          Get-ChildItem D:\a\QOwnNotes-Portable\QOwnNotes-Portable\release
+          tree D:\a\QOwnNotes-Portable\QOwnNotes-Portable\release
+          Compress-Archive -Path * -DestinationPath ..\QOwnNotes.zip
+
+      - name: '📤 Upload artifact: Windows'
+        uses: actions/upload-artifact@v4
+        with:
+          name: QOwnNotes.zip
+          path: QOwnNotes.zip
+      - name: '📤 Upload artifact: Windows sha256sum'
+        uses: actions/upload-artifact@v4
+        with:
+          name: QOwnNotes.zip.sha256
+          path: QOwnNotes.zip.sha256
+      - name: '📤 Upload artifact: Windows clickable sha256sum'
+        uses: actions/upload-artifact@v4
+        with:
+          name: QOwnNotes.zip.sha256sum
+          path: QOwnNotes.zip.sha256sum
+
+#      - name: '📤 Release ZIP'
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ needs.create_release.outputs.upload_url }}
+#          asset_path: QOwnNotes.zip
+#          asset_name: QOwnNotes.zip
+#          asset_content_type: application/zip
+#      - name: '📤 Release sha256 sum'
+#        uses: actions/upload-release-asset@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ needs.create_release.outputs.upload_url }}
+#          asset_path: QOwnNotes.zip.sha256
+#          asset_name: QOwnNotes.zip.sha256
+#          asset_content_type: text/plain
+
+
