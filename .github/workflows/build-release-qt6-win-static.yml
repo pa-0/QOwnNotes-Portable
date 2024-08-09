@@ -2,7 +2,7 @@ name: Build release of QOwnNotes Qt6 Portable
 on:
   push:
     branches:
-       - static_qt6.7.2-4
+       - portable-qt6.7.2
 #      # For testing also on main branch
 #      - main
 #    tags-ignore:
@@ -62,7 +62,7 @@ jobs:
 #          echo "${RELEASE_TEXT}" >> $GITHUB_ENV
 #          echo "EOF" >> $GITHUB_ENV
       - name: Printenv
-      - run: |
+        run: |
           echo "VERSION=${VERSION}"
           echo "TAG=${TAG}"
           echo "RELEASE_TEXT=${RELEASE_TEXT}"
@@ -86,6 +86,7 @@ jobs:
   #
   # Windows build
   #
+ 
   build-windows:
     name: '🧊 Windows Server 2019'
     needs: create_release
@@ -102,7 +103,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install QT Static
+      - name: '😍 Install CUTIE Static'
         uses: pa-0/install-qt-static@v6.7.2-3
         with:
            token: ${{ secrets.GITHUB_TOKEN }}
@@ -116,21 +117,23 @@ jobs:
       - name: Make sure MSVC is found
         uses: ilammy/msvc-dev-cmd@v1
 
-      - name: '⚙️ Printenv'
+      - name: '⚙️ Print Env'
         shell: bash
         run: |
           echo "VERSION=${VERSION}"
           printenv
 
-      - name: Set PATH
+      - name: '🛣️ Set PATH'
         run: |
           $env:QMAKEBIN  = Split-Path -Parent (Get-Command qmake).Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
           $env:Path = $env:QMAKEBIN;$env:Path
           
+      - name: '🥷 Get Ninja'
+        uses: seanmiddleditch/gha-setup-ninja@master
+      
       - name: '🚧 Compile application'
-      - uses: seanmiddleditch/gha-setup-ninja@master
-      - run: |
+        run: |
           $ErrorActionPreference = "OnErrorSilentlyContinue"
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           nmake clean
