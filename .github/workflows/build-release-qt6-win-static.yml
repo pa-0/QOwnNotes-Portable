@@ -89,6 +89,8 @@ jobs:
  
   build-windows:
     name: '🧊 Windows Server 2019'
+    permissions:
+      contents: write  # for actions/create-release to create a release
     # needs: create_release
     # https://github.com/pbek/QOwnNotes/issues/2558 error on windows-2022!
     runs-on: windows-2019
@@ -105,8 +107,6 @@ jobs:
 
       - name: '😍 Install CUTIE Static'
         uses: pa-0/install-qt-static@v6.7.2-3
-        with:
-           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: '⚙️ Set Env'
         shell: bash
