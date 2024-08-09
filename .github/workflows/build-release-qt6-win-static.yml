@@ -133,7 +133,7 @@ jobs:
         uses: seanmiddleditch/gha-setup-ninja@master
       
       - name: '🚧 Compile application'
-      - run: |
+        run: |
           $ErrorActionPreference = "OnErrorSilentlyContinue"
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           nmake clean
