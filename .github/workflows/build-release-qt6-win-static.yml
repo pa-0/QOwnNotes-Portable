@@ -151,7 +151,6 @@ jobs:
       
       - name: '🚧 Compile application'
         run: |
-          $ErrorActionPreference = "OnErrorSilentlyContinue"
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           nmake clean
           qmake -config release
