@@ -2,7 +2,7 @@ name: Build release of QOwnNotes Qt6 Portable
 on:
   push:
     branches:
-       - static_qt6.7.2-4
+       - portable-qt6.7.2
 #      # For testing also on main branch
 #      - main
 #    tags-ignore:
@@ -104,8 +104,25 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
-      - name: '😍 Install CUTIE Static'
+          
+      # - name: Download artifact
+      #  uses: aochmann/actions-download-artifact@1.0.0
+      #  with:
+      #    # Optional, GitHub token
+      #    github_token: ${{secrets.GITHUB_TOKEN}}
+      #    # Optional, uploaded artifact name,
+      #    # will download all artifacts if not specified
+      #    # and extract them in respective subdirectories
+      #    # https://github.com/actions/download-artifact#download-all-artifacts
+      #    name: artifact_name
+      #    # Optional, download latest artifact
+      #    latest: true
+      #    # Optional, directory where to extract artifact
+      #    path: extract_here
+      #    # Optional, defaults to current repo
+      #    repo: ${{github.repository}}
+        
+      - name: '😍 Install Cutie (Qt) Static'
         uses: pa-0/install-qt-static@v6.7.2-3
 
       - name: '⚙️ Set Env'
