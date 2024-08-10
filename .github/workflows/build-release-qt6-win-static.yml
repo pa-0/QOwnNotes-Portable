@@ -1,18 +1,18 @@
 name: Build release of QOwnNotes Qt6 Portable
 on:
-  push:
-    branches:
-       - portable-qt6.7.2
+#  push:
+#    branches:
+#       - portable-qt6.7.2
 #      # For testing also on main branch
 #      - main
 #    tags-ignore:
 #      - '*'
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-paths
-    paths:
-      - 'src/**'
-      - 'tests/**'
-      - '.github/workflows/build-release-qt6.yml'
-      - 'build-systems/github/snap.qt6/**'
+#    paths:
+#      - 'src/**'
+#      - 'tests/**'
+#      - '.github/workflows/build-release-qt6.yml'
+#      - 'build-systems/github/snap.qt6/**'
   # For testing also on pull requests
 #  pull_request:
 #    paths:
@@ -142,9 +142,6 @@ jobs:
 
       - name: '🛣️ Set PATH'
         run: |
-          $env:QMAKEBIN  = Split-Path -Parent (Get-Command qmake).Path
-          $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
-          $env:Path = $env:QMAKEBIN;$env:Path
           
       - name: '🥷 Get Ninja'
         uses: seanmiddleditch/gha-setup-ninja@master
@@ -152,8 +149,10 @@ jobs:
       - name: '🚧 Compile application'
         run: |
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
-          nmake clean
-          qmake -config release
+          $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
+          $env:Path = $env:QMAKEBIN;$env:Path
+          $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc\qmake.conf"
+          qmake6 CONFIG+=release QOwnNotes.pro -r
           nmake
           # Create release directory
           New-Item -Path '..\release' -ItemType 'Directory'
