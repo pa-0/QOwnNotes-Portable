@@ -139,10 +139,6 @@ jobs:
         run: |
           echo "VERSION=${VERSION}"
           printenv
-
-      - name: '🛣️ Set PATH'
-        run: |
-          Get-ChildItem -Path D:\a\QOwnNotes-Portable\QOwnNotes-portable -Recurse -Force
           
       - name: '🥷 Get Ninja'
         uses: seanmiddleditch/gha-setup-ninja@master
@@ -153,6 +149,7 @@ jobs:
       - name: '🚧 Compile application'
         run: |
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
+          call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
           $env:Path = $env:QMAKEBIN;$env:Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
