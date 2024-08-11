@@ -152,8 +152,8 @@ jobs:
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           $Version = $env:WVER
           $programFiles = $Version -gt 2019 ? 'Program Files' : 'Program Files (x86)'
-          cmd.exe /c "call `"C:\$programFiles\Microsoft Visual Studio\$Version\Community\VC\Auxiliary\Build\vcvars64.bat`" && set > %TEMP%\vcvars64_$Version.tmp"
-          Get-Content "$env:TEMP\vcvars64_$Version.tmp" | %{if ($_ -match "^(.*?)=(.*)$"){Set-Content "env:\$($matches[1])" $matches[2]}}
+          cmd.exe /c "call `"C:\$programFiles\Microsoft Visual Studio\$Version\Community\VC\Auxiliary\Build\vcvars64.bat`" && set > %GITHUB_WORKSPACE%\vcvars64_$Version.tmp"
+          Get-Content "$env:GITHUB_WORKSPACE\vcvars64_$Version.tmp" | %{if ($_ -match "^(.*?)=(.*)$"){Set-Content "env:\$($matches[1])" $matches[2]}}
           $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
           $env:Path = $env:QMAKEBIN;$env:Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
