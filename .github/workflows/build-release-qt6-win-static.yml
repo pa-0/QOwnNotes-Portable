@@ -144,14 +144,16 @@ jobs:
       - name: '🥷 Get Ninja'
         uses: seanmiddleditch/gha-setup-ninja@master
       
-      - uses: ilammy/msvc-dev-cmd@v1  
+      - name: Set MSVC developer prompt
+        uses: ilammy/msvc-dev-cmd@v1.6.0
+      - name: Install nasm
+        uses: ilammy/setup-nasm@v1.2.0
       - name: '🚧 Compile application'
         run: |
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
-          $env:Path = $env:QMAKEBIN;$env:Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
-          qmake6 CONFIG+=release QOwnNotes.pro -r -spec $env:QMAKESPEC
+          $env:QMAKEBIN\qmake6.exe CONFIG+=release QOwnNotes.pro -r -spec $env:QMAKESPEC
           nmake
           # Create release directory
           New-Item -Path '..\release' -ItemType 'Directory'
@@ -214,67 +216,3 @@ jobs:
 #          asset_name: QOwnNotes.zip.sha256
 #          asset_content_type: text/plain
 
-
-  #
-  # macOS build
-  #
-#  build-macos:
-#    name: '🍎 macOS Monterey'
-#    needs: create_release
-#    runs-on: macos-latest
-#    env:
-#      # Qt 6.5 doesn't support macOS 10 anymore!
-#      QT_VERSION: 6.4.2
-#    continue-on-error: true
-#    steps:
-
-#      - name: '🧰 Checkout'
-#        uses: actions/checkout@v4
-#        with:
-#          submodules: recursive
-
-#      # https://download.qt.io/online/qtsdkrepository/mac_x64/desktop/
-#      - name: '⚙️ Install Qt'
-#        uses: jurplel/install-qt-action@v4
-#        with:
-#          version: ${{env.QT_VERSION}}
-#          modules: ${{env.QT_MODULES}}
-#          aqtversion: '==2.0.0'
-#          cache: true
-#
-#      - name: '⚙️ Set Env'
-#        shell: bash
-#        run: |
-#          export VERSION=$(cat version.h | sed 's/[^0-9,.]//g')
-#          echo "VERSION=${VERSION}" >> $GITHUB_ENV
-#
-#      - name: '⚙️ Printenv'
-#        shell: bash
-#        run: |
-#          echo "VERSION=${VERSION}"
-#          printenv
-#
-#      - name: '🚧 Compile application'
-#        run: |
-#          echo "#define RELEASE \"GitHub Actions\"" > release.h
-#          lrelease QOwnNotes.pro
-#          #ls ${Qt5_Dir}/bin
-#          ${{env.QMAKE}}
-#          make -j ${{env.CORES}}
-#          ../build-systems/github/macos/create-dmg-qt6.sh
-#
-#      - name: '📤 Upload artifact: macOS'
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: QOwnNotes.dmg
-#          path: src/QOwnNotes.dmg
-#
-##      - name: '📤 Release DMG'
-##        uses: actions/upload-release-asset@v1
-##        env:
-##          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-##        with:
-##          upload_url: ${{ needs.create_release.outputs.upload_url }}
-##          asset_path: src/QOwnNotes.dmg
-##          asset_name: QOwnNotes.dmg
-##          asset_content_type: application/x-apple-diskimage
