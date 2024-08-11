@@ -4,10 +4,6 @@ project(QOwnNotes)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # BEGIN options
-set_target_properties(QOwnNotes-static PROPERTIES
-  LINK_SEARCH_START_STATIC ON
-  LINK_SEARCH_END_STATIC ON
-)
 option(QON_QT6_BUILD "Build QOwnNotes with Qt6" ON)
 option(DEV_MODE "Build QOwnNotes in developer mode" OFF)
 # END options
@@ -42,11 +38,14 @@ else()
 endif()
 
 set_target_properties(QOwnNotes PROPERTIES
+
     CXX_STANDARD 11
     CXX_STANDARD_REQUIRED ON
     AUTOMOC ON
     AUTOUIC ON
     AUTORCC ON
+    LINK_SEARCH_START_STATIC ON
+    LINK_SEARCH_END_STATIC ON
 )
 
 if (UNIX AND DEV_MODE)
