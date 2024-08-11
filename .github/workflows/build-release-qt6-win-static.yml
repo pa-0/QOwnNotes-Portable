@@ -142,6 +142,7 @@ jobs:
 
       - name: '🛣️ Set PATH'
         run: |
+          Get-ChildItem -Path D:\a\QOwnNotes-Portable\QOwnNotes-portable -Recurse -Force
           
       - name: '🥷 Get Ninja'
         uses: seanmiddleditch/gha-setup-ninja@master
@@ -152,7 +153,7 @@ jobs:
           $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
           $env:Path = $env:QMAKEBIN;$env:Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc\qmake.conf"
-          qmake6 CONFIG+=release QOwnNotes.pro -r
+          qmake6 CONFIG+=release QOwnNotes.pro -r -spec $env:QMAKESPEC
           nmake
           # Create release directory
           New-Item -Path '..\release' -ItemType 'Directory'
