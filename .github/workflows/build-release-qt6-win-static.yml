@@ -37,6 +37,7 @@ env:
   QT_MODULES: "qtwebsockets"
   QMAKE: qmake6
   CORES: 16
+  WVER: 2019
 
 jobs:
 #  create_release:
@@ -88,7 +89,7 @@ jobs:
   #
  
   build-windows:
-    name: '🧊 Windows Server 2019'
+    name: '🧊 Windows Server'
     permissions:
       contents: write  # for actions/create-release to create a release
     # needs: create_release
@@ -149,7 +150,10 @@ jobs:
       - name: '🚧 Compile application'
         run: |
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
-          call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          $Version = $env:WVER
+          $programFiles = $Version -gt 2019 ? 'Program Files' : 'Program Files (x86)'
+          cmd.exe /c "call `"C:\$programFiles\Microsoft Visual Studio\$Version\Community\VC\Auxiliary\Build\vcvars64.bat`" && set > %TEMP%\vcvars64_$Version.tmp"
+          Get-Content "$env:TEMP\vcvars64_$Version.tmp" | %{if ($_ -match "^(.*?)=(.*)$"){Set-Content "env:\$($matches[1])" $matches[2]}}
           $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
           $env:Path = $env:QMAKEBIN;$env:Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
