@@ -152,7 +152,7 @@ jobs:
         run: |
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
-          & cmd /c "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qmake-cmake.bat"
+          & cmd /c "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qt-cmake.bat"
           # CONFIG+=release QOwnNotes.pro -r -spec $env:QMAKESPEC
           nmake
           # Create release directory
