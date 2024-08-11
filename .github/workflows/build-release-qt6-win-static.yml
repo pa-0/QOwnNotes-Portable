@@ -144,17 +144,10 @@ jobs:
       - name: '🥷 Get Ninja'
         uses: seanmiddleditch/gha-setup-ninja@master
       
-      - name: 'Setup Visual Studio'
-        uses: ilammy/msvc-dev-cmd@v1
-        
+      - uses: ilammy/msvc-dev-cmd@v1  
       - name: '🚧 Compile application'
         run: |
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
-          pushd 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\'    
-          cmd /c "vcvarsall.bat&set" | foreach {
-            if($_ -match "="){$v = $_.split("="); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"}}
-          popd
-          write-host "`nVisual Studio 2015 Command Prompt variables set." -ForegroundColor Yellow
           $env:QMAKEBIN  = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin"
           $env:Path = $env:QMAKEBIN;$env:Path
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
