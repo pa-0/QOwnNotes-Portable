@@ -4,6 +4,19 @@ project(QOwnNotes)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # BEGIN options
+
+set(CompilerFlags
+        CMAKE_CXX_FLAGS
+        CMAKE_CXX_FLAGS_DEBUG
+        CMAKE_CXX_FLAGS_RELEASE
+        CMAKE_C_FLAGS
+        CMAKE_C_FLAGS_DEBUG
+        CMAKE_C_FLAGS_RELEASE
+        )
+foreach(CompilerFlag ${CompilerFlags})
+  string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+endforeach()
+
 option(QON_QT6_BUILD "Build QOwnNotes with Qt6" ON)
 option(DEV_MODE "Build QOwnNotes in developer mode" OFF)
 # END options
