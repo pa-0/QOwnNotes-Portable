@@ -150,9 +150,12 @@ jobs:
         uses: ilammy/setup-nasm@v1.2.0
       - name: '🚧 Compile application'
         run: |
+          New-Item -Path ..\build -ItemType "directory"
           Write-Output "#define RELEASE ""GitHub Actions""" > release.h
           $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
-          & cmd /c "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qt-cmake.bat"
+          & cmd /c "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qt-cmake.bat -B `"%GITHUB_WORKSPACE%\build`" "
+          Set-Location  ..\build 
+          cmake --build --config release
           # CONFIG+=release QOwnNotes.pro -r -spec $env:QMAKESPEC
           nmake
           # Create release directory
