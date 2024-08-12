@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(QOwnNotes)
 
+set(CMAKE_POLICY_DEFAULT_CMP0091 NEW)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 ### TODO
@@ -12,21 +13,21 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 ###        $<$<CONFIG:Release>:/MT> #--|
 ###    )
 
-### MSVC_RUNTIME_LIBRARY
+## MSVC_RUNTIME_LIBRARY
 
 
-### set(CompilerFlags
-###         CMAKE_CXX_FLAGS
-###         CMAKE_CXX_FLAGS_DEBUG
-###         CMAKE_CXX_FLAGS_RELEASE
-###         CMAKE_C_FLAGS
-###         CMAKE_C_FLAGS_DEBUG
-###         CMAKE_C_FLAGS_RELEASE
-###         )
+## set(CompilerFlags
+##         CMAKE_CXX_FLAGS
+##         CMAKE_CXX_FLAGS_DEBUG
+##         CMAKE_CXX_FLAGS_RELEASE
+##         CMAKE_C_FLAGS
+##         CMAKE_C_FLAGS_DEBUG
+##         CMAKE_C_FLAGS_RELEASE
+##         )
 
-foreach(CompilerFlag ${CompilerFlags})
-  string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
-endforeach()
+## foreach(CompilerFlag ${CompilerFlags})
+##  string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+## endforeach()
 
 # BEGIN options
 
@@ -34,15 +35,16 @@ option(QON_QT6_BUILD "Build QOwnNotes with Qt6" OFF)
 option(DEV_MODE "Build QOwnNotes in developer mode" OFF)
 # END options
 
-if (QON_QT6_BUILD)
-    set(QT_VERSION_MAJOR 6)
-    set(QT_DEFAULT_MAJOR_VERSION 6)
-else()
-    set(QT_VERSION_MAJOR 5)
-endif()
+## if (QON_QT6_BUILD)
+set(QT_VERSION_MAJOR 6)
+set(QT_DEFAULT_MAJOR_VERSION 6)
+## else()
+##     set(QT_VERSION_MAJOR 5)
+## endif()
 
 # put the QOwnNotes.exe in build directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 # for intellisense
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
@@ -53,7 +55,7 @@ add_subdirectory(libraries/botan)
 include_directories(libraries/sonnet/src/core)
 #some hunspell settings for windows
 include(libraries/sonnet/src/plugins/hunspell/hunspell/CMakeLists.txt)
-
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
 add_executable(QOwnNotes "")
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
@@ -573,11 +575,11 @@ SET(QON_TS_FILES
     languages/QOwnNotes_et.ts
 )
 
-if (QON_QT6_BUILD)
-    qt6_add_translation(QON_QM_FILES ${QON_TS_FILES})
-else()
-    qt5_add_translation(QON_QM_FILES ${QON_TS_FILES})
-endif()
+## if (QON_QT6_BUILD)
+qt6_add_translation(QON_QM_FILES ${QON_TS_FILES})
+## else()
+##    qt5_add_translation(QON_QM_FILES ${QON_TS_FILES})
+## endif()
 
 add_custom_target(translations DEPENDS ${QON_QM_FILES})
 
