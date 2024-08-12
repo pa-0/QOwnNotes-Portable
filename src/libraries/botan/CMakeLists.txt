@@ -1,6 +1,18 @@
 cmake_minimum_required(VERSION 3.5)
 project(Botan)
 
+set(CompilerFlags
+        CMAKE_CXX_FLAGS
+        CMAKE_CXX_FLAGS_DEBUG
+        CMAKE_CXX_FLAGS_RELEASE
+        CMAKE_C_FLAGS
+        CMAKE_C_FLAGS_DEBUG
+        CMAKE_C_FLAGS_RELEASE
+        )
+foreach(CompilerFlag ${CompilerFlags})
+  string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+endforeach()
+
 option(BUILD_WITH_SYSTEM_BOTAN "Build using system installed Botan 2 crypto library" OFF)
 
 add_library(botan STATIC "")
