@@ -3,21 +3,34 @@ project(QOwnNotes)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-# BEGIN options
+### TODO
+### target_link_libraries(PROJECT LIBRARY)
+### add_library(LIBRARY STATIC LIBRARY.cpp)
+### add_compile_options(
+###        $<$<CONFIG:>:/MT> #---------|
+###        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
+###        $<$<CONFIG:Release>:/MT> #--|
+###    )
 
-set(CompilerFlags
-        CMAKE_CXX_FLAGS
-        CMAKE_CXX_FLAGS_DEBUG
-        CMAKE_CXX_FLAGS_RELEASE
-        CMAKE_C_FLAGS
-        CMAKE_C_FLAGS_DEBUG
-        CMAKE_C_FLAGS_RELEASE
-        )
+### MSVC_RUNTIME_LIBRARY
+
+
+### set(CompilerFlags
+###         CMAKE_CXX_FLAGS
+###         CMAKE_CXX_FLAGS_DEBUG
+###         CMAKE_CXX_FLAGS_RELEASE
+###         CMAKE_C_FLAGS
+###         CMAKE_C_FLAGS_DEBUG
+###         CMAKE_C_FLAGS_RELEASE
+###         )
+
 foreach(CompilerFlag ${CompilerFlags})
   string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
 endforeach()
 
-option(QON_QT6_BUILD "Build QOwnNotes with Qt6" ON)
+# BEGIN options
+
+option(QON_QT6_BUILD "Build QOwnNotes with Qt6" OFF)
 option(DEV_MODE "Build QOwnNotes in developer mode" OFF)
 # END options
 
@@ -31,7 +44,7 @@ endif()
 # put the QOwnNotes.exe in build directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-# for intellisence
+# for intellisense
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
 # include some Botan settings
@@ -42,7 +55,7 @@ include_directories(libraries/sonnet/src/core)
 include(libraries/sonnet/src/plugins/hunspell/hunspell/CMakeLists.txt)
 
 add_executable(QOwnNotes "")
-target_link_libraries(QOwnNotes PUBLIC "-static")
+
 if (CMAKE_BUILD_TYPE MATCHES Debug)
     message("Debug build configuration detected")
     add_definitions(-DQT_DEBUG)
@@ -51,14 +64,11 @@ else()
 endif()
 
 set_target_properties(QOwnNotes PROPERTIES
-
     CXX_STANDARD 11
     CXX_STANDARD_REQUIRED ON
     AUTOMOC ON
     AUTOUIC ON
     AUTORCC ON
-    LINK_SEARCH_START_STATIC ON
-    LINK_SEARCH_END_STATIC ON
 )
 
 if (UNIX AND DEV_MODE)
