@@ -42,9 +42,9 @@ SOURCES += \
     $$PWD/src/parsers/latexparser.cxx \
     $$PWD/src/parsers/manparser.cxx \
     $$PWD/src/parsers/odfparser.cxx \
-  #  $$PWD/src/parsers/testparser.cxx \
     $$PWD/src/parsers/textparser.cxx \
     $$PWD/src/parsers/xmlparser.cxx
+    #$$PWD/src/parsers/testparser.cxx \
 
 win32 {
     message("Hunspell Windows Build")
