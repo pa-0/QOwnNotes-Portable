@@ -172,7 +172,7 @@ jobs:
             # copy portable mode launcher to the release path
             Copy-Item ..\appveyor\QOwnNotesPortable.bat ..\release
             # copy translation files
-            # Copy-Item languages\*.qm ..\release
+            Copy-Item languages\*.qm ..\release
             Set-Location ..\release
             # fetching dependencies of QT app
             # http://doc.qt.io/qt-5/windows-deployment.html
