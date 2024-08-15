@@ -123,7 +123,7 @@ if(UNIX AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         POSITION_INDEPENDENT_CODE ON
     )
     target_compile_options(botan PRIVATE
-        "-fpermissive" "-finline-functions" "-Wno-long-long -MT"
+        "-fpermissive" "-finline-functions" "-Wno-long-long"
     )
 endif()
 
@@ -136,4 +136,4 @@ if(CMAKE_SYSTEM_NAME MATCHES "(Linux|FreeBSD)")
     )
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -MT")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
