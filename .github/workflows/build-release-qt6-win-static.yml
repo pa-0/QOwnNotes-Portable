@@ -147,26 +147,32 @@ jobs:
         - name: '🥷 Get Ninja'
           uses: seanmiddleditch/gha-setup-ninja@master
         
-        - name: Set MSVC developer prompt
-          uses: ilammy/msvc-dev-cmd@v1.6.0
-        - name: Install nasm
-          uses: ilammy/setup-nasm@v1.2.0
+
 
         - name: '🧰 Checkout'
           uses: actions/checkout@v4
           with:
             submodules: recursive
         
-        - name: '🚧 Compile application'
+        - name: '🚧 Prepare Dir for Build'
           run: |
             New-Item -Path ..\build -ItemType "directory"
             Write-Output "#define RELEASE ""GitHub Actions""" > release.h
             $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
-            & cmd /c "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qt-cmake.bat -B `"%GITHUB_WORKSPACE%\build`" "
-            Set-Location  ..\build 
+
+        - name: Set MSVC developer prompt
+          uses: ilammy/msvc-dev-cmd@v1.6.0
+        
+        - name: 'Build'
+          shell: cmd
+          run: |
+            call D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qt-cmake.bat -B "%GITHUB_WORKSPACE%\build"
+            cd  ..\build 
             cmake --build . --config release
-            # CONFIG+=release QOwnNotes.pro -r -spec $env:QMAKESPEC
-            nmake
+
+        - name: 'Pack App'
+          shell: powershell
+          run: |
             # Create release directory
             New-Item -Path '..\release' -ItemType 'Directory'
             # copy the binary to our release path
