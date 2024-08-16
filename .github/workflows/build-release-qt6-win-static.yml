@@ -125,9 +125,15 @@ jobs:
         #    repo: ${{github.repository}}
           
         - name: '😍 Install Cutie (Qt) Static'
-          uses: pa-0/install-qt-static@v6.7.2-5
+          shell: bash
           env: 
             GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          run: |
+            gh release download -R pa-0/install-qt-static -P "*zip.00*"
+            7z x -r qt_static.zip.001 -o.\qt_static
+            ls -al
+            echo "$(pwd -W | sed 's,/,\\,g')\qt_static\bin" >> $GITHUB_PATH
+
         - name: '⚙️ Set Env'
           shell: bash
           run: |
