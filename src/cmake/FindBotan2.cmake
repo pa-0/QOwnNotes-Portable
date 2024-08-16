@@ -42,7 +42,7 @@ if(Botan2_FOUND)
         set_target_properties(Botan2::Botan2 PROPERTIES
             INTERFACE_INCLUDE_DIRECTORIES ${Botan2_INCLUDE_DIRS}
             IMPORTED_LOCATION ${Botan2_FullLibraryPath}
-            LINK_FLAGS (${Botan2_LDFLAGS_OTHER} /MT)
+            LINK_FLAGS (${Botan2_LDFLAGS_OTHER})
         )
     endif()
 endif()
