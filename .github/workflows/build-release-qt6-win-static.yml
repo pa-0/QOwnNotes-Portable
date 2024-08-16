@@ -101,12 +101,7 @@ jobs:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       continue-on-error: true
       steps:
-  
-        - name: '🧰 Checkout'
-          uses: actions/checkout@v4
-          with:
-            submodules: recursive
-            
+      
         # - name: Download artifact
         #  uses: aochmann/actions-download-artifact@1.0.0
         #  with:
@@ -156,6 +151,12 @@ jobs:
           uses: ilammy/msvc-dev-cmd@v1.6.0
         - name: Install nasm
           uses: ilammy/setup-nasm@v1.2.0
+
+        - name: '🧰 Checkout'
+          uses: actions/checkout@v4
+          with:
+            submodules: recursive
+        
         - name: '🚧 Compile application'
           run: |
             New-Item -Path ..\build -ItemType "directory"
