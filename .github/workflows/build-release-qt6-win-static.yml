@@ -124,7 +124,7 @@ jobs:
         #    repo: ${{github.repository}}
           
         - name: '😍 Install Cutie (Qt) Static'
-          uses: pa-0/install-qt-static@v6.7.2-3
+          uses: pa-0/install-qt-static@v6.7.2-5
   
         - name: '⚙️ Set Env'
           shell: bash
