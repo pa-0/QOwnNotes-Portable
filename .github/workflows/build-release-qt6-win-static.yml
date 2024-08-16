@@ -101,31 +101,19 @@ jobs:
         GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       continue-on-error: true
       steps:
-      
-        # - name: Download artifact
-        #  uses: aochmann/actions-download-artifact@1.0.0
-        #  with:
-        #    # Optional, GitHub token
-        #    github_token: ${{secrets.GITHUB_TOKEN}}
-        #    # Optional, uploaded artifact name,
-        #    # will download all artifacts if not specified
-        #    # and extract them in respective subdirectories
-        #    # https://github.com/actions/download-artifact#download-all-artifacts
-        #    name: artifact_name
-        #    # Optional, download latest artifact
-        #    latest: true
-        #    # Optional, directory where to extract artifact
-        #    path: extract_here
-        #    # Optional, defaults to current repo
-        #    repo: ${{github.repository}}
-          
+
+        - name: '🧰 Checkout'
+          uses: actions/checkout@v4
+          with:
+            submodules: recursive
+            
         - name: '😍 Install Cutie (Qt) Static'
           shell: bash
           env: 
             GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           run: |
             gh release download -R pa-0/install-qt-static -p "*zip.00*"
-            7z x -r qt_static.zip.001 -oqt_static
+            7z x qt_static.zip.001 -oqt_static
             ls -al
             echo "$(pwd -W | sed 's,/,\\,g')\qt_static\bin" >> $GITHUB_PATH
 
@@ -143,16 +131,6 @@ jobs:
           run: |
             echo "VERSION=${VERSION}"
             printenv
-            
-        - name: '🥷 Get Ninja'
-          uses: seanmiddleditch/gha-setup-ninja@master
-        
-
-
-        - name: '🧰 Checkout'
-          uses: actions/checkout@v4
-          with:
-            submodules: recursive
         
         - name: '🚧 Prepare Dir for Build'
           run: |
@@ -166,7 +144,7 @@ jobs:
         - name: 'Build'
           shell: cmd
           run: |
-            call D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\bin\qt-cmake.bat -B "%GITHUB_WORKSPACE%\build"
+            call D:\a\QOwnNotes-Portable\QOwnNotes-Portable\src\qt_static\bin\qt-cmake.bat -B "%GITHUB_WORKSPACE%\build"
             cd  ..\build 
             cmake --build . --config release
 
