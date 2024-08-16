@@ -130,7 +130,7 @@ jobs:
             GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           run: |
             gh release download -R pa-0/install-qt-static -p "*zip.00*"
-            7z x -r qt_static.zip.001 -o.\qt_static
+            7z x -r qt_static.zip.001 -oqt_static
             ls -al
             echo "$(pwd -W | sed 's,/,\\,g')\qt_static\bin" >> $GITHUB_PATH
 
