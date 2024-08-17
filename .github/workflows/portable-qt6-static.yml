@@ -154,7 +154,7 @@ jobs:
             # Create release directory
             New-Item -Path '..\release' -ItemType 'Directory'
             # copy the binary to our release path
-            Copy-Item -Path $(Get-ChildItem -Path .\release -Recurse).FullName -Destination ..\release
+            Copy-Item -Path ".\release\*" -Recurse) -Destination "..\release"
             # Copy-Item release\QOwnNotes.exe ..\release
             # copy Win64 OpenSSL v1.1.1g DLLs to the release path
             Copy-Item ..\build-systems\github\windows\libcrypto-1_1-x64.dll ..\release
