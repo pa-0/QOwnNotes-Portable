@@ -1,5 +1,20 @@
 # QOwnNotes Changelog
 
+## 24.8.6
+- There was a new release of the **QOwnNotes Web Companion browser extension** 2024.8.0
+  - Bookmarks can now be edited in the bookmarks list (for [#65](https://github.com/qownnotes/web-companion/issues/65))
+    - This feature needs QOwnNotes 24.8.5 or higher
+  - Update dependencies
+  - Add more translations
+
+## 24.8.5
+- The CMake build process was adapted to be production ready and to be used in Nix
+  (for [#3076](https://github.com/pbek/QOwnNotes/issues/3076))
+- Support was added for the **QOwnNotes Web Companion browser extension**
+  to also allow editing of markdown line bookmarks
+  (for [#65](https://github.com/qownnotes/web-companion/issues/65))
+- Added more Dutch translation (thank you, stephanp)
+
 ## 24.8.4
 - The AppImage release was fixed after a linuxdeploy issue
   (for [#3073](https://github.com/pbek/QOwnNotes/issues/3073))
