@@ -136,7 +136,7 @@ jobs:
           run: |
             New-Item -Path ..\build -ItemType "directory"
             Write-Output "#define RELEASE ""GitHub Actions""" > release.h
-            $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\qt_static\mkspecs\win32-msvc"
+            $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\src\qt_static\mkspecs\win32-msvc"
 
         - name: Set MSVC developer prompt
           uses: ilammy/msvc-dev-cmd@v1.6.0
@@ -160,6 +160,7 @@ jobs:
             # copy Win64 OpenSSL v1.1.1g DLLs to the release path
             Copy-Item ..\build-systems\github\windows\libcrypto-1_1-x64.dll ..\release
             Copy-Item ..\build-systems\github\windows\libssl-1_1-x64.dll ..\release
+            Copy-Item ..\build-systems\github\windows\qt.conf ..\qt_static\bin\
             # copy unzip application for updater
             Copy-Item ..\appveyor\unzip.exe ..\release
             # copy updater script
@@ -172,6 +173,8 @@ jobs:
             # fetching dependencies of QT app
             # http://doc.qt.io/qt-5/windows-deployment.html
             # Bug in Qt 5.14+: https://stackoverflow.com/questions/61045959/windeployqt-error-unable-to-find-the-platform-plugin
+            $env:QMAKESPEC = "D:\a\QOwnNotes-Portable\QOwnNotes-Portable\src\qt_static\mkspecs\win32-msvc"
+            $env:PATH = D:\a\QOwnNotes-Portable\QOwnNotes-Portable\src\qt_static\bin;$env:PATH
             windeployqt -core -gui -widgets -sql -svg -network -xml -printsupport -qml -websockets -concurrent QOwnNotes.exe
             # Create zip archive
             Get-ChildItem
