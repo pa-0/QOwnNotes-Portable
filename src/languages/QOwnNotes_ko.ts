@@ -82,6 +82,13 @@
 </message>
 </context>
 <context>
+<name>BacklinkWidget</name>
+<message>
+<source>Open note and find &lt;code&gt;%1&lt;/code&gt;</source>
+<translation>노트를 열고 &lt;code&gt;%1&lt;/code&gt;를 찾기</translation>
+</message>
+</context>
+<context>
 <name>DictionaryManagerDialog</name>
 <message>
 <source>Dictionary manager</source>
@@ -1650,6 +1657,14 @@ File: QOwnNotes_en.ts</translation>
 <message>
 <source>Find navigation item</source>
 <translation>탐색 항목 찾기</translation>
+</message>
+<message>
+<source>Headings</source>
+<translation>제목</translation>
+</message>
+<message>
+<source>Backlinks</source>
+<translation>백링크</translation>
 </message>
 <message>
 <source>Add a tag to the current note</source>

@@ -24,6 +24,7 @@
 #include "entities/notefolder.h"
 #include "entities/tag.h"
 #include "metricsservice.h"
+#include "services/settingsservice.h"
 #include "widgets/qownnotesmarkdowntextedit.h"
 #ifndef INTEGRATION_TESTS
 #include <mainwindow.h>
@@ -84,7 +85,7 @@ void WebSocketServerService::close() {
 quint16 WebSocketServerService::getPort() const { return m_port; }
 
 quint16 WebSocketServerService::getSettingsPort() {
-    QSettings settings;
+    SettingsService settings;
     quint16 port = static_cast<quint16>(
         settings.value(QStringLiteral("webSocketServerService/port"), getDefaultPort())
             .toULongLong());
@@ -126,7 +127,7 @@ void WebSocketServerService::processMessage(const QString &message) {
     auto *pSender = qobject_cast<QWebSocket *>(sender());
     MetricsService::instance()->sendVisitIfEnabled("websocket/message/" + type);
     const QString token = jsonObject.value(QStringLiteral("token")).toString();
-    QSettings settings;
+    SettingsService settings;
     QString storedToken = settings.value(QStringLiteral("webSocketServerService/token")).toString();
 
     // request the token if not set
@@ -428,7 +429,10 @@ int WebSocketServerService::editBookmark(const QJsonObject &jsonObject) {
 
     // Get the "markdown" attribute from the "data" object
     QString markdown = dataObject.value("markdown").toString().trimmed();
-    QString newMarkdown = dataObject.value("newMarkdown").toString().trimmed();
+
+    // Make sure there was no newline character in the string
+    // https://github.com/pbek/QOwnNotes/issues/3105
+    QString newMarkdown = dataObject.value("newMarkdown").toString().remove(QChar('\n')).trimmed();
 
     if (markdown.isEmpty() || newMarkdown.isEmpty()) {
         return 0;
@@ -598,25 +602,25 @@ void WebSocketServerService::socketDisconnected() {
 }
 
 QString WebSocketServerService::getBookmarksTag() {
-    return QSettings()
+    return SettingsService()
         .value(QStringLiteral("webSocketServerService/bookmarksTag"), "bookmarks")
         .toString();
 }
 
 QString WebSocketServerService::getBookmarksNoteName() {
-    return QSettings()
+    return SettingsService()
         .value(QStringLiteral("webSocketServerService/bookmarksNoteName"), "Bookmarks")
         .toString();
 }
 
 QString WebSocketServerService::getCommandSnippetsTag() {
-    return QSettings()
+    return SettingsService()
         .value(QStringLiteral("webSocketServerService/commandSnippetsTag"), "commands")
         .toString();
 }
 
 QString WebSocketServerService::getCommandSnippetsNoteName() {
-    return QSettings()
+    return SettingsService()
         .value(QStringLiteral("webSocketServerService/commandSnippetsNoteName"), "Commands")
         .toString();
 }
