@@ -94,8 +94,8 @@ bool WelcomeDialog::handleNoteFolderSetup() {
         Utils::Misc::printInfo(QStringLiteral("Note path '%1' exists.").arg(_notesPath));
     } else {
         if (ui->createNoteFolderCheckBox->isChecked()) {
-            Utils::Misc::printInfo(QString("Note path '%1' doesn't exist yet and will "
-                                           "be created.")
+            Utils::Misc::printInfo(QStringLiteral("Note path '%1' doesn't exist yet and will "
+                                                  "be created.")
                                        .arg(_notesPath));
 
             // mkpath should only return true if the path was created, but we

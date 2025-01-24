@@ -3848,7 +3848,7 @@ void SettingsDialog::on_resetMessageBoxesButton_clicked() {
 }
 
 void SettingsDialog::on_markdownHighlightingCheckBox_toggled(bool checked) {
-    ui->markdownHighlightingFrame->setEnabled(checked);
+    ui->fullyHighlightedBlockquotesCheckBox->setEnabled(checked);
 }
 
 void SettingsDialog::on_localTrashEnabledCheckBox_toggled(bool checked) {
@@ -4245,7 +4245,7 @@ void SettingsDialog::on_loginFlowButton_clicked() {
 
         QPointer<SettingsDialog> alive(this);
 
-        auto postData = QString("token=" + token).toLocal8Bit();
+        auto postData = QStringLiteral("token=%1").arg(token).toLocal8Bit();
         auto data = Utils::Misc::downloadUrl(pollUrl, true, postData);
 
         if (!alive) {

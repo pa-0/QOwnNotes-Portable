@@ -85,7 +85,7 @@
 <name>BacklinkWidget</name>
 <message>
 <source>Open note and find &lt;code&gt;%1&lt;/code&gt;</source>
-<translation type="unfinished">Open note and find &lt;code&gt;%1&lt;/code&gt;</translation>
+<translation>Ouvrir la note et rechercher &lt;code&gt;%1&lt;/code&gt;</translation>
 </message>
 </context>
 <context>
@@ -177,14 +177,6 @@
 <message>
 <source>Gujarati</source>
 <translation>Gujarati</translation>
-</message>
-<message>
-<source>Portugese (Brazilian)</source>
-<translation>Portugais (brésilien)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portugais</translation>
 </message>
 <message>
 <source>Danish</source>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>Persan</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation>Portugais (brésilien)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation>Portugais</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1472,7 +1472,7 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
+<source>Link to a URL or note</source>
 <translation>Lier une note ou une URL</translation>
 </message>
 <message>
@@ -1713,10 +1713,6 @@
 <translation>&amp;Quitter</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>&amp;Trouver une note</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>&amp;Supprimer la note courante</translation>
 </message>
@@ -1914,6 +1910,10 @@
 <translation>Paramétrer les dossiers et sous-dossiers de notes</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation>&amp;Chercher du texte dans les notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>À propos de &amp;QOwnNotes…</translation>
 </message>
@@ -2096,10 +2096,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>Afficher la liste des notes sous le panneau des labels</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Trouver des notes parmi tous les sous-dossiers / étiquettes</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2451,6 +2447,10 @@
 <translation>Faire un don</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation>Chercher du texte dans les notes parmi tous les sous-dossiers / étiquettes</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Importer des notes depuis Evernote</translation>
 </message>
@@ -2730,6 +2730,14 @@ Si la corbeille est activée sur votre serveur ownCloud, vous devriez pouvoir re
 <message>
 <source>Saving temporary image</source>
 <translation>Enregistrement d'une image temporaire</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation>Le dossier de notes n’existe pas !</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation>Le dossier de notes &lt;b&gt;%1&lt;/b&gt; dont le chemin est &lt;b&gt;%2&lt;/b&gt; n’existe plus !</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3610,16 +3618,16 @@ Si la corbeille est activée sur votre serveur ownCloud, vous devriez pouvoir re
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>afficher les notes dans le dossier « %1 » (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Toutes les notes</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>Afficher les notes de tous les sous-dossiers (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3872,6 +3880,13 @@ Si la corbeille est activée sur votre serveur ownCloud, vous devriez pouvoir re
 <numerusform>Un changement dans le chemin de la note a été détecté. Souhaitez-vous remplacer toutes les occurrences des liens &lt;strong&gt;%1&lt;/strong&gt; par &lt;strong&gt;%2&lt;/strong&gt; et les liens avec le nom de fichier &lt;strong&gt;%3&lt;/strong&gt; par &lt;strong&gt;%4&lt;/strong&gt; dans &lt;strong&gt;%n&lt;/strong&gt; fichiers de notes ?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>Fichier image existant</translation>
@@ -3912,10 +3927,6 @@ Si la corbeille est activée sur votre serveur ownCloud, vous devriez pouvoir re
 <translation>Double-clic pour épingler la note à l'onglet</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;Dernière modification: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;chemin d’accès: %1</translation>
 </message>
@@ -3934,6 +3945,10 @@ Si la corbeille est activée sur votre serveur ownCloud, vous devriez pouvoir re
 <message>
 <source>Light mode detected</source>
 <translation>Mode clair détecté</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;modifié pour la dernière fois : %2&lt;br /&gt;taille du fichier : %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5602,6 +5617,14 @@ Vous pouvez tester vous-même. Si vous avez des conflits de synchronisation, vou
 <translation>Supprimer automatiquement les espaces en fin de ligne dans le texte de la note</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation>Les notes plus grandes ne seront pas affichées dans la liste de notes</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation>Taille maximum de fichier de note :</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation>Rechercher des scripts d’intégration d’IA dans le dépôt de scripts</translation>
 </message>
@@ -6934,6 +6957,14 @@ Vos notes resteront intactes!</translation>
 <translation>Afficher uniquement les pièces jointes orphelines</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation>Montrer uniquement les pièces jointes utilisées dans la note courante</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>Montrer uniquement depuis la note courante</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>Ajouter les pièces jointes sélectionnées à la note actuelle</translation>
 </message>
@@ -7078,6 +7109,14 @@ Vos notes resteront intactes!</translation>
 <message>
 <source>Refresh</source>
 <translation>Rafraîchir</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation>Montrer uniquement les images utilisées dans la note courante</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>Montrer uniquement depuis la note courante</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7255,6 +7294,21 @@ Vos notes resteront intactes!</translation>
 <message>
 <source>New tag</source>
 <translation>Nouveau tag</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation>Différences :</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation>Accepter les changements ?</translation>
 </message>
 </context>
 <context>
@@ -7838,9 +7892,9 @@ Cela ne peut être annuler !</translation>
 </message>
 <message numerus="yes">
 <source>Bookmark edited in %n note(s)</source>
-<translation type="unfinished">
-<numerusform>Bookmark edited in %n note(s)</numerusform>
-<numerusform>Bookmark edited in %n note(s)</numerusform>
+<translation>
+<numerusform>Signet modifié dans %n note</numerusform>
+<numerusform>Signet modifié dans %n notes</numerusform>
 </translation>
 </message>
 <message>
@@ -7964,6 +8018,10 @@ Cela ne peut être annuler !</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation>Affiche de l’aide sur les options de ligne de commande.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>Exécute l’application en mode portable.</translation>

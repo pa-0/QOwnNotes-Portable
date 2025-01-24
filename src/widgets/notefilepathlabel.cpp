@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 Patrizio Bekerle -- <patrizio@bekerle.com>
+ * Copyright (c) 2014-2025 Patrizio Bekerle -- <patrizio@bekerle.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ void NoteFilePathLabel::updateText() {
 
     const NoteSubFolder noteSubFolder = note.getNoteSubFolder();
     if (noteSubFolder.isFetched()) {
-        notePath.prepend(QString("<span style='color: %1;'>%2</span>%3")
+        notePath.prepend(QStringLiteral("<span style='color: %1;'>%2</span>%3")
                              .arg(subFolderColor,
                                   Utils::Misc::htmlspecialchars(noteSubFolder.relativePath()),
                                   QString(separator)));
@@ -73,7 +73,7 @@ void NoteFilePathLabel::updateText() {
         }
 #endif
 
-        notePath.prepend(QString("<span style='color: %1;'>%2</span>%3")
+        notePath.prepend(QStringLiteral("<span style='color: %1;'>%2</span>%3")
                              .arg(noteFolderColor, Utils::Misc::htmlspecialchars(noteFolderPath),
                                   QString(separator)));
     }

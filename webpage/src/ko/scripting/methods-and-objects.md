@@ -1115,8 +1115,9 @@ var fileName = script.getSaveFileName("Please select HTML file to save", "output
 
 ### 예제
 ```js
-// 등록된 변수를 정의해야 나중에 액세스할 수 있습니다
+// you have to define your registered variables so you can access them later
 property string myString;
+property string myStringSecret;
 property bool myBoolean;
 property string myText;
 property int myInt;
@@ -1124,11 +1125,11 @@ property string myFile;
 property string myDirectory;
 property string mySelection;
 
-// 사용자가 스크립트 설정에서 설정할 수 있도록 설정 변수를 등록합니다
+// register your settings variables so the user can set them in the script settings
 //
-// 안타깝게도 Qt에는 QVariantHash가 없습니다. 우리는 사용만할 수 있습니다
-// QVariantMap (임의 순서 없음) 또는 
-// QVariantList (임의 순서로 정렬할 수 있음) 입니다
+// unfortunately there is no QVariantHash in Qt, we only can use
+// QVariantMap (that has no arbitrary ordering) or QVariantList (which at
+// least can be ordered arbitrarily)
 property variant settingsVariables: [
     {
         "identifier": "myString",
@@ -1136,6 +1137,12 @@ property variant settingsVariables: [
         "description": "Please enter a valid string:",
         "type": "string",
         "default": "My default value",
+    },
+    {
+        "identifier": "myStringSecret",
+        "name": "I am a password field",
+        "description": "Please enter a valid string:",
+        "type": "string-secret",
     },
     {
         "identifier": "myBoolean",
@@ -1184,7 +1191,7 @@ property variant settingsVariables: [
 ];
 ```
 
-또한 다음과 같은 특수 함수 `registerSettingsVariables()`를 사용하여 `settingsVariables`를 재정의할 수 있습니다:
+In addition, you can override the `settingsVariables` with a special function `registerSettingsVariables()` like this:
 
 ### 예제
 ```js
@@ -1210,26 +1217,26 @@ function registerSettingsVariables() {
 ### 메서드 호출 및 매개 변수
 ```cpp
 /**
- * 영구 변수 저장
- * 이러한 변수는 모든 스크립트에서 전역적으로 액세스할 수 있습니다
- * 키에 "PersistentVariablesTest/myVar"와 같은 의미 있는 접두사를 사용하십시오
+ * Stores a persistent variable
+ * These variables are accessible globally over all scripts
+ * Please use a meaningful prefix in your key like "PersistentVariablesTest/myVar"
  *
  * @param key {QString}
  * @param value {QVariant}
  */
 void ScriptingService::setPersistentVariable(const QString &key,
-                                                const QVariant &value);
+                                             const QVariant &value);
 
 /**
- * 지속 변수 로드
- * 이러한 변수는 모든 스크립트에서 전역적으로 액세스할 수 있습니다
+ * Loads a persistent variable
+ * These variables are accessible globally over all scripts
  *
  * @param key {QString}
  * @param defaultValue {QVariant} return value if the setting doesn't exist (optional)
  * @return
  */
 QVariant ScriptingService::getPersistentVariable(const QString &key,
-                                                    const QVariant &defaultValue);
+                                                 const QVariant &defaultValue);
 ```
 
 ### 예제
@@ -1251,14 +1258,14 @@ script.log(script.getPersistentVariable("PersistentVariablesTest/myVar", "nothin
 ### 메서드 호출 및 매개 변수
 ```cpp
 /**
- * 응용 프로그램 설정 변수 로드
+ * Loads an application settings variable
  *
  * @param key {QString}
  * @param defaultValue {QVariant} return value if the setting doesn't exist (optional)
  * @return
  */
 QVariant ScriptingService::getApplicationSettingsVariable(const QString &key,
-                                                            const QVariant &defaultValue);
+                                                          const QVariant &defaultValue);
 ```
 
 ### 예제
@@ -1551,6 +1558,36 @@ var result = script.inputDialogGetMultiLineText(
 script.log(result);
 ```
 
+두 텍스트의 차이점을 표시하는 대화 상자 열기
+----------------------------------------------------------
+
+### 메서드 호출 및 매개 변수
+```cpp
+/**
+* 대화 상자를 열어 두 텍스트의 차이점을 표시하고 사용자가 결과를 편집할 수 있도록 합니다
+*
+* @param title {QString} title of the dialog
+* @param label {QString} label text of the dialog
+* @param text1 {QString} first text
+* @param text2 {QString} second text
+* @return
+  */
+  QString ScriptingService::textDiffDialog(const QString &title, const QString &label,
+                                           const QString &text1, const QString &text2);
+```
+
+`text2`는 대화 상자에서 편집할 수 있는 텍스트입니다. `취소`을 클릭하거나 `Esc`를 누른 경우 빈 문자열이 반환됩니다.
+
+### 예제
+```js
+const text = script.noteTextEditSelectedText();
+const aiPrompt = "텍스트를 한국어로 번역합니다";
+const aiResult = script.aiComplete(aiPrompt + ":\n\n" + text);
+
+var result = script.textDiffDialog("AI Text Tool", "Resulting text", text, aiResult);
+script.log(result);
+```
+
 파일이 있는지 확인하기
 -------------------------
 
@@ -1634,7 +1671,7 @@ script.log(result);
 
 정규식을 정의하고 강조 표시 상태에 할당하여 강조 표시 규칙을 편집기에 직접 주입할 수 있습니다.
 
-### 메서드 호출 및 매개 변수
+### 메소드 호출 및 매개변수
 ```cpp
 /**
  * 편집기의 구문 강조 표시에 강조 표시 규칙을 추가

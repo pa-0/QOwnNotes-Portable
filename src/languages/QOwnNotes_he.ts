@@ -179,14 +179,6 @@
 <translation>גוג'ראטי</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>פורטוגזית (ברזילאית)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>פורטוגזית</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>דנית</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>פרסית</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1486,8 +1486,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>קישור לכתובת האתר או לתו</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1735,10 +1735,6 @@
 <translation>&amp;צא</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>&amp;מצא פתק</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>&amp;הסר את הפתק הנוכחי</translation>
 </message>
@@ -1936,6 +1932,10 @@
 <translation type="unfinished">Setup note folders / subfolders</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>אודות &amp;QOwnNotes…</translation>
 </message>
@@ -2118,10 +2118,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>הצג רשימת הערות בלוח התגים</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>מצא הערות בכל התגים / תיקיות המשנה</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2478,6 +2474,10 @@
 <translation>לתרום</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>ייבא הערות מ- Evernote</translation>
 </message>
@@ -2783,6 +2783,14 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <message>
 <source>Saving temporary image</source>
 <translation>שמירת תמונה זמנית</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3696,16 +3704,16 @@ n note הועבר לתיקיית המשנה הערה "%2"</numerusform>
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation type="unfinished">show notes in folder '%1' (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation type="unfinished">All notes</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation type="unfinished">Show notes from all note subfolders (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3989,6 +3997,15 @@ n note הועבר לתיקיית המשנה הערה "%2"</numerusform>
 &lt;strong&gt;%n&lt;/strong&gt; קבצי הערה?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation type="unfinished">Image file exists</translation>
@@ -4057,10 +4074,6 @@ n note הועבר לתיקיית המשנה הערה "%2"</numerusform>
 </translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation type="unfinished">&lt;br /&gt;path: %1</translation>
 </message>
@@ -4079,6 +4092,10 @@ n note הועבר לתיקיית המשנה הערה "%2"</numerusform>
 <message>
 <source>Light mode detected</source>
 <translation type="unfinished">Light mode detected</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5784,6 +5801,14 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>הסר אוטומטית רווחים נגררים בטקסט ההערה</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation type="unfinished">Maximum note file size:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
@@ -7147,6 +7172,14 @@ Your notes will stay intact!</source>
 <translation type="unfinished">Only show orphaned attachments</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation type="unfinished">Add selected attachments to the current note</translation>
 </message>
@@ -7293,6 +7326,14 @@ Your notes will stay intact!</source>
 <message>
 <source>Refresh</source>
 <translation type="unfinished">Refresh</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7472,6 +7513,21 @@ Your notes will stay intact!</source>
 <message>
 <source>New tag</source>
 <translation>תג חדש</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -8207,6 +8263,10 @@ This cannot be undone!</source>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>מפעיל את היישום במצב נייד.</translation>

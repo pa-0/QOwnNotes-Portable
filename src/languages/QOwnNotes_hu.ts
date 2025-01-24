@@ -179,14 +179,6 @@
 <translation>Gudzsaráti</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>Portugál (brazil)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portugál</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>Dán</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>Perzsa</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1472,8 +1472,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>Linkeljen be egy URL-t vagy egy jegyzetet</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1713,10 +1713,6 @@
 <translation>&amp;Kilépés</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>&amp;Jegyzet keresése</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>Aktuális jegyzet eltávolítása</translation>
 </message>
@@ -1914,6 +1910,10 @@
 <translation type="unfinished">Setup note folders / subfolders</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>A &amp;QOwnNotes névjegye…</translation>
 </message>
@@ -2096,10 +2096,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>A jegyzetlista megjelenítése a címke panelen</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Jegyzetek keresése az összes almappában</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2451,6 +2447,10 @@
 <translation>Adományozás</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Jegyzetek importálása az Evernote-ból</translation>
 </message>
@@ -2729,6 +2729,14 @@ Ha a kuka a ownCloud kiszolgálón engedélyezett, onnan visszaállítható.</nu
 <message>
 <source>Saving temporary image</source>
 <translation>Kép mentése</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3609,16 +3617,16 @@ Ha a kuka a ownCloud kiszolgálón engedélyezett, onnan visszaállítható.</nu
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>megjeleníti a jegyzeteket a mappában '%1' (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Az összes jegyzet</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>Jegyzetek megjelenítése az összes jegyzetalmappából (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3871,6 +3879,13 @@ Ha a kuka a ownCloud kiszolgálón engedélyezett, onnan visszaállítható.</nu
 <numerusform>A jegyzék elérési útjának megváltozását észleltem. A &lt;strong&gt;%1 &lt;/strong&gt; hivatkozások minden előfordulását ki szeretné cserélni a &lt;strong&gt;%2 &lt;/strong&gt; -ra, a &lt;strong&gt;%3 &lt;/strong&gt; fájlnévvel ellátott linkekre pedig &lt;strong&gt;%4 &lt;/strong&gt; &gt; a &lt;strong&gt;%n &lt;/strong&gt; megjegyzés fájlokban?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>Létezik képfájl</translation>
@@ -3911,10 +3926,6 @@ Ha a kuka a ownCloud kiszolgálón engedélyezett, onnan visszaállítható.</nu
 <translation>Kattintson duplán a jegyzet fülre rögzitéséhez</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt; &lt;br /&gt; utolsó módosítás: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;elérési út: %1</translation>
 </message>
@@ -3933,6 +3944,10 @@ Ha a kuka a ownCloud kiszolgálón engedélyezett, onnan visszaállítható.</nu
 <message>
 <source>Light mode detected</source>
 <translation>Fénymódot észlelt</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5602,6 +5617,14 @@ Tesztelje, ha szinkronizációs konfliktus lép fel és állítson be ilyen eset
 <translation>Automatikusan eltávolítja a jegyzetszövegből az egymást követő szóközöket</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation type="unfinished">Maximum note file size:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
@@ -6933,6 +6956,14 @@ A jegyzetek érintetlenül maradnak!</translation>
 <translation>Csak árva mellékleteket mutasson</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>A kiválasztott mellékletek hozzáadása az aktuális jegyzethez</translation>
 </message>
@@ -7077,6 +7108,14 @@ A jegyzetek érintetlenül maradnak!</translation>
 <message>
 <source>Refresh</source>
 <translation>Frissítés</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7254,6 +7293,21 @@ A jegyzetek érintetlenül maradnak!</translation>
 <message>
 <source>New tag</source>
 <translation>Új címke</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -7959,6 +8013,10 @@ Nem lehet visszavonni!</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>Hordozható üzemmódban fut az alkalmazás.</translation>

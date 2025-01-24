@@ -3,16 +3,16 @@
 Un script QOwnNotes est principalement **JavaScript** dans des [fichiers Qt QML](https://doc.qt.io/qt-5/qtqml-index.html).
 
 ```js
-importer QtQml 2.0
-importer QOwnNotesTypes 1.0
+import QtQml 2.0
+import QOwnNotesTypes 1.0
 
 Script {
-     /**
-         * Sera exécuté lors de l'initialisation du moteur de script
-         */
-     function init () {
-         script.log ("Bonjour tout le monde!");
-     }
+    /**
+     * Will be run when the scripting engine initializes
+     */
+    function init() {
+        script.log("Hello world!");
+    }
 }
 ```
 
@@ -33,5 +33,5 @@ Si vous souhaitez proposer un script pour le **référentiel de scripts**, veuil
 Si vous avez besoin d'accéder à une certaine fonctionnalité dans QOwnNotes ou si vous avez des questions ou des idées, veuillez ouvrir un problème sur la [page de problèmes QOwnNotes](https://github.com/pbek/QOwnNotes/issues).
 
 ::: tip
-Pour la journalisation, vous pouvez utiliser la commande `script.log()` pour vous connecter au widget de journal.
+For logging, you can use the `script.log()` command to log to the *Log panel*, which you can turn on in the *Window / Panels* menu.
 :::

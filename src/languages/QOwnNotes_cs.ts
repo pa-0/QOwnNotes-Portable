@@ -179,14 +179,6 @@
 <translation>Gujarati</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>Portugalština (brazilská)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portugalština</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>Dánština</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>Perština</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1483,8 +1483,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>Odkaz na url nebo poznámku</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1732,10 +1732,6 @@
 <translation>&amp;Ukončit</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>&amp;Najít poznámku</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>&amp;Odstranit současnou poznámku</translation>
 </message>
@@ -1933,6 +1929,10 @@
 <translation type="unfinished">Setup note folders / subfolders</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>O &amp;QOwnNotes…</translation>
 </message>
@@ -2115,10 +2115,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>Zobrazit seznam poznámek pod panelem tagů</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Najít poznámky ve všech štítcích / podsložkách</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2475,6 +2471,10 @@
 <translation>Přispět</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Importovat poznámky z Evernote</translation>
 </message>
@@ -2774,6 +2774,14 @@ Jestliže je koš na Vašem ownCloud serveru povolen, budete z něj schopni odst
 <message>
 <source>Saving temporary image</source>
 <translation>Ukládání dočasného obrázku</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3684,16 +3692,16 @@ Jestliže je koš na Vašem ownCloud serveru povolen, budete z něj schopni odst
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>zobrazit poznámky ve složce '%1' (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Všechny poznámky</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>Ukaž poznámky ze všech podsložek (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3950,6 +3958,15 @@ Jestliže je koš na Vašem ownCloud serveru povolen, budete z něj schopni odst
 <numerusform>Byla detekována změna cesty poznámky. Chcete nahradit všechny výskyty &lt;strong&gt;%1 &lt;/strong&gt; odkazů &lt;strong&gt;%2 &lt;/strong&gt; a odkazy s názvem &lt;strong&gt;%3 &lt;/strong&gt; za &lt;strong&gt;%4 &lt;/strong &gt; v &lt;strong&gt;%n &lt;/strong&gt; souborech poznámek?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>Soubor obrázku existuje</translation>
@@ -3994,10 +4011,6 @@ Jestliže je koš na Vašem ownCloud serveru povolen, budete z něj schopni odst
 </translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br/&gt; naposledy upraveno: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;cesta: %1</translation>
 </message>
@@ -4016,6 +4029,10 @@ Jestliže je koš na Vašem ownCloud serveru povolen, budete z něj schopni odst
 <message>
 <source>Light mode detected</source>
 <translation>Zjištěný světlý režim</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5696,6 +5713,14 @@ Jen se otestujte, pokud máte konflikty synchronizace a pokud ano, nastavte vyš
 <translation>Automaticky odstraní koncové mezery v textu poznámky</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation type="unfinished">Maximum note file size:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
@@ -7034,6 +7059,14 @@ Vaše poznámky zůstanou neporušené!</translation>
 <translation>Zobrazit pouze osiřelé přílohy</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>Přidat označené přílohy ke stávající poznámce</translation>
 </message>
@@ -7180,6 +7213,14 @@ Vaše poznámky zůstanou neporušené!</translation>
 <message>
 <source>Refresh</source>
 <translation>Znovu načíst</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7359,6 +7400,21 @@ Vaše poznámky zůstanou neporušené!</translation>
 <message>
 <source>New tag</source>
 <translation>Nový štítek</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -8074,6 +8130,10 @@ To nelze vrátit zpět!</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>Spustí aplikaci v přenosném režimu.</translation>

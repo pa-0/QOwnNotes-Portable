@@ -1196,7 +1196,8 @@ OwnCloudService *OwnCloudService::instance(bool reset, int cloudConnectionId) {
 void OwnCloudService::handleVersionsLoading(QString data) {
 #ifndef INTEGRATION_TESTS
     MainWindow::instance()->enableShowVersionsButton();
-    MainWindow::instance()->showStatusBarMessage(tr("Done with loading note versions"), 2000);
+    MainWindow::instance()->showStatusBarMessage(tr("Done with loading note versions"),
+                                                 QStringLiteral("🕒"), 2000);
 #endif
 
     // check if we get any data at all
@@ -1207,6 +1208,7 @@ void OwnCloudService::handleVersionsLoading(QString data) {
 
     // we have to add [], so the string can be parsed as JSON
     data = QStringLiteral("[") % data % QStringLiteral("]");
+    qDebug() << __func__ << " - 'data': " << data;
 
     QJSEngine engine;
     QJSValue result = engine.evaluate(data);
@@ -1254,7 +1256,8 @@ void OwnCloudService::handleVersionsLoading(QString data) {
 void OwnCloudService::handleTrashedLoading(QString data) {
 #ifndef INTEGRATION_TESTS
     MainWindow::instance()->enableShowTrashButton();
-    MainWindow::instance()->showStatusBarMessage(tr("Done with loading trashed notes"), 2000);
+    MainWindow::instance()->showStatusBarMessage(tr("Done with loading trashed notes"),
+                                                 QStringLiteral("🗑️"), 2000);
 #endif
 
     // check if we get any data at all

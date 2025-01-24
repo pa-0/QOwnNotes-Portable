@@ -179,14 +179,6 @@
 <translation>구자라트어</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>포르투갈어 (브라질)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>포르투갈어</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>덴마크어</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>페르시아어</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation>포르투갈어 (브라질)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation>포르투갈어</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1470,8 +1470,8 @@ File: QOwnNotes_en.ts</translation>
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>URL 또는 노트 연결</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1707,10 +1707,6 @@ File: QOwnNotes_en.ts</translation>
 <translation>종료(&amp;Q)</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>노트 찾기(&amp;F)</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>현재 노트 제거(&amp;R)</translation>
 </message>
@@ -1908,6 +1904,10 @@ File: QOwnNotes_en.ts</translation>
 <translation>노트 폴더 / 하위 폴더 설정</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation>노트에서 텍스트 찾기(&amp;F)</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>QOwnNotes 정보</translation>
 </message>
@@ -2090,10 +2090,6 @@ File: QOwnNotes_en.ts</translation>
 <message>
 <source>Show note list under tag panel</source>
 <translation>태그 패널 아래에 노트 목록 표시</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>모든 태그/하위 폴더에서 노트 찾기</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2445,6 +2441,10 @@ File: QOwnNotes_en.ts</translation>
 <translation>기부</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation>모든 태그 / 하위 폴더의 메모에서 텍스트 찾기</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Evernote에서 노트 가져오기</translation>
 </message>
@@ -2711,6 +2711,14 @@ ownCloud 서버에서 휴지통을 사용할 수 있는 경우 휴지통을 복�
 <message>
 <source>Saving temporary image</source>
 <translation>임시 이미지 저장 중</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation>노트 폴더가 존재하지 않습니다!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation>경로가 &lt;b&gt;%2&lt;/b&gt;인 노트 폴더 &lt;b&gt;%1&lt;/b&gt;가 더 이상 존재하지 않습니다!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3579,16 +3587,16 @@ ownCloud 서버에서 휴지통을 사용할 수 있는 경우 휴지통을 복�
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>폴더 '%1' (%2) 에 노트 표시</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>모든 노트</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>모든 노트 하위 폴더의 노트 표시 (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation>폴더 '%1' (%2)에 노트 표시</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3839,6 +3847,12 @@ ownCloud 서버에서 휴지통을 사용할 수 있는 경우 휴지통을 복�
 <numerusform>노트 경로 변경이 탐지되었습니다. &lt;strong&gt;%n&lt;/strong&gt; 노트 파일에서 발생하는 모든 &lt;strong&gt;%1&lt;/strong&gt; 링크를 &lt;strong&gt;%2&lt;/strong&gt;로 바꾸고 파일 이름 &lt;strong&gt;%3&lt;/strong&gt;을 &lt;strong&gt;%4&lt;/strong&gt;로 바꾸시겠습니까?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation>
+<numerusform>노트 경로의 변경이 감지되었습니다. &lt;strong&gt;%n&lt;/strong&gt; 노트 파일로 나가는 모든 링크를 교체하시겠습니까?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>이미지 파일이 존재합니다</translation>
@@ -3878,10 +3892,6 @@ ownCloud 서버에서 휴지통을 사용할 수 있는 경우 휴지통을 복�
 <translation>노트를 탭에 고정하려면 두 번 클릭</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;최종수정: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;경로: %1</translation>
 </message>
@@ -3900,6 +3910,10 @@ ownCloud 서버에서 휴지통을 사용할 수 있는 경우 휴지통을 복�
 <message>
 <source>Light mode detected</source>
 <translation>밝은 모드가 감지됨</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;마지막 수정: %2&lt;br /&gt;파일 크기: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5566,6 +5580,14 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>노트 텍스트에서 자동으로 후행 공백 제거</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation>이보다 큰 메모는 메모 목록에 표시되지 않습니다</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation>최대 노트 파일 크기:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation>AI 통합 스크립트에 대한 스크립트 리포지토리 검색</translation>
 </message>
@@ -6898,6 +6920,14 @@ Your notes will stay intact!</source>
 <translation>고립된 첨부 파일만 표시</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation>현재 노트에 사용되는 첨부 파일만 표시</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>현재 노트에서만 표시</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>현재 노트에 선택한 첨부 파일 추가</translation>
 </message>
@@ -7041,6 +7071,14 @@ Your notes will stay intact!</source>
 <message>
 <source>Refresh</source>
 <translation>새로 고침</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation>현재 노트에 사용되는 이미지만 표시</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>현재 노트에서만 표시</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7217,6 +7255,21 @@ Your notes will stay intact!</source>
 <message>
 <source>New tag</source>
 <translation>새 태그</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation>텍스트 차이</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation>차이점:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation>변경을 수락하시겠습니까?</translation>
 </message>
 </context>
 <context>
@@ -7919,6 +7972,10 @@ This cannot be undone!</source>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation>명령줄 옵션에 도움말을 표시합니다.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>응용 프로그램을 휴대용 모드로 실행합니다.</translation>

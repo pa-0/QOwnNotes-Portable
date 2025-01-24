@@ -179,14 +179,6 @@
 <translation>Gujarati</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>Portoghese (brasiliano)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portoghese</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>Danese</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>Persiano</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1472,8 +1472,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>Collega un URL o una nota</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1713,10 +1713,6 @@
 <translation>&amp;Esci</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>&amp;Cerca una nota</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>&amp;Elimina la nota corrente</translation>
 </message>
@@ -1914,6 +1910,10 @@
 <translation>&amp;Imposta cartelle/sottocartelle delle note</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>Informazioni su &amp;QOwnNotes…</translation>
 </message>
@@ -2096,10 +2096,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>Mostra elenco note sotto il pannello delle etichette</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Trova note in ogni etichetta / sotto-cartella</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2451,6 +2447,10 @@
 <translation>Fai una donazione</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Importa note da Evernote</translation>
 </message>
@@ -2729,6 +2729,14 @@ Se il cestino è attivato sul server ownCloud si dovrebbe essere in grado di rip
 <message>
 <source>Saving temporary image</source>
 <translation>Salvataggio immagine temporanea</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3609,16 +3617,16 @@ Se il cestino è attivato sul server ownCloud si dovrebbe essere in grado di rip
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>mostra note nella cartella '%1' (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Tutte le note</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>Mostra note da tutte le sottocartelle di note (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3871,6 +3879,13 @@ Se il cestino è attivato sul server ownCloud si dovrebbe essere in grado di rip
 <numerusform>È stato rilevato un cambiamento del nome del file della nota. Sostituire tutte le ricorrenze di &lt;strong&gt;%1&lt;/strong&gt; collegamenti con &lt;strong&gt;%2&lt;/strong&gt; e i collegamenti con nome di file &lt;strong&gt;%3&lt;/strong&gt; con &lt;strong&gt;%4&lt;/strong&gt; nel &lt;strong&gt;%n&lt;/strong&gt; file delle note?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>Esiste un file immagine</translation>
@@ -3911,10 +3926,6 @@ Se il cestino è attivato sul server ownCloud si dovrebbe essere in grado di rip
 <translation>Doppio clic per bloccare la nota alla scheda</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;ultima modifica: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;percorso: %1</translation>
 </message>
@@ -3933,6 +3944,10 @@ Se il cestino è attivato sul server ownCloud si dovrebbe essere in grado di rip
 <message>
 <source>Light mode detected</source>
 <translation>Modalità chiara individuata</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5600,6 +5615,14 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>Rimuovi automaticamente gli spazi in coda al testo della nota</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation type="unfinished">Maximum note file size:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
@@ -6932,6 +6955,14 @@ Le proprie note non verranno modificate!</translation>
 <translation>Mostra solo allegati orfani</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>Aggiungi allegati selezionati alla nota corrente</translation>
 </message>
@@ -7076,6 +7107,14 @@ Le proprie note non verranno modificate!</translation>
 <message>
 <source>Refresh</source>
 <translation>Aggiorna</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7253,6 +7292,21 @@ Le proprie note non verranno modificate!</translation>
 <message>
 <source>New tag</source>
 <translation>Nuova etichetta</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -7958,6 +8012,10 @@ Non sarà possibile annullare l'operazione!</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>Esegue l'applicazione in modalità portatile.</translation>

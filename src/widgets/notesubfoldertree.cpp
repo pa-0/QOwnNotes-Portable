@@ -1,6 +1,7 @@
 #include "notesubfoldertree.h"
 
 #include <QHeaderView>
+#include <QKeyEvent>
 #include <QMenu>
 #include <memory>
 
@@ -17,7 +18,7 @@ NoteSubFolderTree::NoteSubFolderTree(QWidget *parent) : QTreeWidget(parent) {
         header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     });
     setContextMenuPolicy(Qt::CustomContextMenu);
-
+    installEventFilter(this);
     initConnections();
 }
 
@@ -127,7 +128,11 @@ QTreeWidgetItem *NoteSubFolderTree::addNoteSubFolder(QTreeWidgetItem *parentItem
     SettingsService settings;
     const int linkCount = Note::countByNoteSubFolderId(
         id, settings.value(QStringLiteral("noteSubfoldersPanelShowNotesRecursively")).toBool());
-    QString toolTip = tr("show notes in folder '%1' (%2)").arg(name, QString::number(linkCount));
+    QString toolTip = tr("Show notes in folder '%1' (%2)").arg(name, QString::number(linkCount));
+
+#ifdef QT_DEBUG
+    toolTip += QStringLiteral("<br />id: %1").arg(noteSubFolder.getId());
+#endif
 
     auto *item = new QTreeWidgetItem();
     item->setText(0, name);
@@ -349,7 +354,8 @@ void NoteSubFolderTree::removeSelectedNoteSubFolders(QTreeWidget *parent) {
             // remove the directory recursively from the file system
             if (noteSubFolder.removeFromFileSystem()) {
                 mainWindow->showStatusBarMessage(
-                    tr("Removed note subfolder: %1").arg(noteSubFolder.fullPath()));
+                    tr("Removed note subfolder: %1").arg(noteSubFolder.fullPath()),
+                    QStringLiteral("📁"));
             }
         }
 
@@ -427,4 +433,17 @@ void NoteSubFolderTree::onItemSelectionChanged() {
     if (selectedItems().size() > 1) {
         Q_EMIT multipleSubfoldersSelected();
     }
+}
+
+bool NoteSubFolderTree::eventFilter(QObject *obj, QEvent *event) {
+    if (event->type() == QEvent::KeyPress) {
+        auto *keyEvent = dynamic_cast<QKeyEvent *>(event);
+
+        if ((keyEvent->key() == Qt::Key_Delete) || (keyEvent->key() == Qt::Key_Backspace)) {
+            removeSelectedNoteSubFolders(this);
+            return true;
+        }
+    }
+
+    return QTreeWidget::eventFilter(obj, event);
 }

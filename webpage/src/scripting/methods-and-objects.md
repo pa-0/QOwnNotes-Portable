@@ -1192,6 +1192,7 @@ The user can then set these properties in the script settings.
 ```js
 // you have to define your registered variables so you can access them later
 property string myString;
+property string myStringSecret;
 property bool myBoolean;
 property string myText;
 property int myInt;
@@ -1211,6 +1212,12 @@ property variant settingsVariables: [
         "description": "Please enter a valid string:",
         "type": "string",
         "default": "My default value",
+    },
+    {
+        "identifier": "myStringSecret",
+        "name": "I am a password field",
+        "description": "Please enter a valid string:",
+        "type": "string-secret",
     },
     {
         "identifier": "myBoolean",
@@ -1259,7 +1266,7 @@ property variant settingsVariables: [
 ];
 ```
 
-In addition you can override the `settingsVariables` with a special
+In addition, you can override the `settingsVariables` with a special
 function `registerSettingsVariables()` like this:
 
 ### Example
@@ -1295,7 +1302,7 @@ Storing and loading persistent variables
  * @param value {QVariant}
  */
 void ScriptingService::setPersistentVariable(const QString &key,
-                                                const QVariant &value);
+                                             const QVariant &value);
 
 /**
  * Loads a persistent variable
@@ -1306,7 +1313,7 @@ void ScriptingService::setPersistentVariable(const QString &key,
  * @return
  */
 QVariant ScriptingService::getPersistentVariable(const QString &key,
-                                                    const QVariant &defaultValue);
+                                                 const QVariant &defaultValue);
 ```
 
 ### Example
@@ -1338,7 +1345,7 @@ Loading application settings variables
  * @return
  */
 QVariant ScriptingService::getApplicationSettingsVariable(const QString &key,
-                                                            const QVariant &defaultValue);
+                                                          const QVariant &defaultValue);
 ```
 
 ### Example
@@ -1641,6 +1648,37 @@ An empty string will be returned, if `Cancel` was clicked or `Escape` was presse
 ```js
 var result = script.inputDialogGetMultiLineText(
     "multi-line edit", "Please enter a text", "current text");
+script.log(result);
+```
+
+Opening a dialog to show the differences between two texts
+----------------------------------------------------------
+
+### Method call and parameters
+```cpp
+/**
+* Opens a dialog to show the differences between two texts and lets the user edit the result
+*
+* @param title {QString} title of the dialog
+* @param label {QString} label text of the dialog
+* @param text1 {QString} first text
+* @param text2 {QString} second text
+* @return
+  */
+  QString ScriptingService::textDiffDialog(const QString &title, const QString &label,
+                                           const QString &text1, const QString &text2);
+```
+
+`text2` is the text you will be able to edit in the dialog.
+An empty string will be returned, if `Cancel` was clicked or `Escape` was pressed.
+
+### Example
+```js
+const text = script.noteTextEditSelectedText();
+const aiPrompt = "Translate the text to English";
+const aiResult = script.aiComplete(aiPrompt + ":\n\n" + text);
+
+var result = script.textDiffDialog("AI Text Tool", "Resulting text", text, aiResult);
 script.log(result);
 ```
 

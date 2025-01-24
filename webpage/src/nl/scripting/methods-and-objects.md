@@ -1133,6 +1133,7 @@ De gebruiker kan deze eigenschappen vervolgens instellen in de scriptinstellinge
 ```js
 // you have to define your registered variables so you can access them later
 property string myString;
+property string myStringSecret;
 property bool myBoolean;
 property string myText;
 property int myInt;
@@ -1152,6 +1153,12 @@ property variant settingsVariables: [
         "description": "Please enter a valid string:",
         "type": "string",
         "default": "My default value",
+    },
+    {
+        "identifier": "myStringSecret",
+        "name": "I am a password field",
+        "description": "Please enter a valid string:",
+        "type": "string-secret",
     },
     {
         "identifier": "myBoolean",
@@ -1200,7 +1207,7 @@ property variant settingsVariables: [
 ];
 ```
 
-Bovendien kun je de `settingsVariables` overschrijven met een speciale functie `registerSettingsVariables()` zoals deze:
+Daarnaast kunt u de `settingsVariables` als volgt overschrijven met een speciale functie `registerSettingsVariables()`:
 
 ### Voorbeeld
 ```js
@@ -1226,26 +1233,26 @@ Persistente variabelen opslaan en laden
 ### Methodeaanroep en parameters
 ```cpp
 /**
-* Slaat een persistente variabele op
-  * Deze variabelen zijn wereldwijd toegankelijk via alle scripts
-  * Gebruik een betekenisvol voorvoegsel in uw sleutel, zoals "PersistentVariablesTest/myVar"
+ * Stores a persistent variable
+ * These variables are accessible globally over all scripts
+ * Please use a meaningful prefix in your key like "PersistentVariablesTest/myVar"
  *
  * @param key {QString}
  * @param value {QVariant}
  */
 void ScriptingService::setPersistentVariable(const QString &key,
-                                                const QVariant &value);
+                                             const QVariant &value);
 
 /**
-* Laadt een persistente variabele
-  * Deze variabelen zijn wereldwijd toegankelijk via alle scripts
+ * Loads a persistent variable
+ * These variables are accessible globally over all scripts
  *
  * @param key {QString}
- * @param defaultValue {QVariant} retourwaarde als de instelling niet bestaat (optioneel)
+ * @param defaultValue {QVariant} return value if the setting doesn't exist (optional)
  * @return
  */
 QVariant ScriptingService::getPersistentVariable(const QString &key,
-                                                    const QVariant &defaultValue);
+                                                 const QVariant &defaultValue);
 ```
 
 ### Voorbeeld
@@ -1267,14 +1274,14 @@ Variabelen voor applicatie-instellingen laden
 ### Methodeaanroep en parameters
 ```cpp
 /**
-  * Laadt een variabele voor toepassingsinstellingen
-  *
-  * @param sleutel {QString}
-  * @param defaultValue {QVariant} retourwaarde als de instelling niet bestaat (optioneel)
-  * @return
-  */
+ * Loads an application settings variable
+ *
+ * @param key {QString}
+ * @param defaultValue {QVariant} return value if the setting doesn't exist (optional)
+ * @return
+ */
 QVariant ScriptingService::getApplicationSettingsVariable(const QString &key,
-                                                            const QVariant &defaultValue);
+                                                          const QVariant &defaultValue);
 ```
 
 ### Voorbeeld
@@ -1567,6 +1574,36 @@ Er wordt een lege tekenreeks geretourneerd als op `Annuleren` is geklikt of `Esc
 var result = script.inputDialogGetMultiLineText(
     "multi-line edit", "Voer een tekst in", "huidige tekst");
 script.log(result);
+```
+
+Een dialoogvenster openen om de verschillen tussen twee teksten weer te geven
+----------------------------------------------------------
+
+### Methodeaanroep en parameters
+```cpp
+/**
+* Opent een dialoogvenster om de verschillen tussen twee teksten weer te geven en laat de gebruiker het resultaat bewerken
+*
+* @param titel {QString} titel van het dialoogvenster
+* @param label {QString} label tekst van het dialoogvenster
+* @param tekst1 {QString} eerste tekst
+* @param tekst2 {QString} tweede tekst
+* @return
+  */
+  QString ScriptingService::textDiffDialog(const QString &title, const QString &label,
+                                           const QString & text1, const QString &text2);
+```
+
+`tekst2` is de tekst die je in het dialoogvenster kunt bewerken. Er wordt een lege tekenreeks geretourneerd als er op `Annuleren` is geklikt of op `Escape` is gedrukt.
+
+### Voorbeeld
+```js
+const text = script.noteTextEditSelectedText();
+const aiPrompt = "Vertaal de tekst naar het Engels";
+const aiResult = script.aiComplete(aiPrompt + ":\n\n" + tekst);
+
+var result = script.textDiffDialog("AI Text Tool", "Resulterende tekst", tekst, aiResult);
+script.log(resultaat);
 ```
 
 Controleren of er een bestand bestaat

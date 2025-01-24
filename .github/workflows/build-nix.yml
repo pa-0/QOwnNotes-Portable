@@ -8,12 +8,14 @@ on:
       - '*'
     paths:
       - 'src/**'
+      - 'shell.nix'
       - 'default.nix'
       - 'build-systems/nix/**'
       - '.github/workflows/build-nix.yml'
   pull_request:
     paths:
       - 'src/**'
+      - 'shell.nix'
       - 'default.nix'
       - 'build-systems/nix/**'
       - '.github/workflows/build-nix.yml'
@@ -21,15 +23,16 @@ on:
 
 jobs:
   build:
-    name: 🏗️ Build ${{ matrix.just-recipe }}
-    runs-on: ubuntu-latest
+    name: 🏗️ Build ${{ matrix.just-recipe }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         just-recipe: ['nix-build', 'nix-build-cmake-qt5']
+        os: ['ubuntu-latest', 'macos-latest', 'macos-14']
     steps:
       - name: ⚙️ Install Nix
-        uses: cachix/install-nix-action@v29
+        uses: cachix/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - name: 🧰 Checkout code

@@ -44,3 +44,18 @@ make
 يمكن الوصول إلى الملفات المضغوطة للكود المصدري برابط مثل هذا:
 
 `https://github.com/pbek/QOwnNotes/releases/download/v23.7.0/qownnotes-23.7.0.tar.xz`
+
+## البناء بـ&nbsp;Nix
+
+إذا كان لديك [مدير الحزم Nix](https://wiki.nixos.org/wiki/Nix_package_manager) فيمكنك استنساخ المصدر بــجت، كما شُرح بالأعلى، ثم بناءه بالأوامر التالية:
+
+```bash
+# افتح صدفة نِكس لجلب الأدوات المطلوبة
+nix-shell
+
+# ابنِ التطبيق
+just nix-build
+
+# شغّل التطبيق المبني
+just nix-run
+```

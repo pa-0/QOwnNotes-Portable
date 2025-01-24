@@ -17,6 +17,8 @@ alias fix-linting := clang-format
 alias linter-fix := clang-format
 alias trace-process := process-trace
 alias test := src-test
+alias download-translations := translations-download
+alias nixfmt := nix-format
 
 # Build the translations
 [group('translations')]
@@ -134,9 +136,19 @@ git-apply-qownnotes-patch:
 git-apply-qmarkdowntextedit-patch:
     cd ./src/libraries/qmarkdowntextedit && git apply {{ transferDir }}/qmarkdowntextedit.patch
 
-# Create a git patch for the project and some libraries
+# Apply a git patch to piwiktracker
 [group('patches')]
-git-create-patch:
+git-apply-piwiktracker-patch:
+    cd ./src/libraries/piwiktracker && git apply {{ transferDir }}/piwiktracker.patch
+
+# Apply a git patch to qttoolbareditor
+[group('patches')]
+git-apply-qttoolbareditor-patch:
+    cd ./src/libraries/qttoolbareditor && git apply {{ transferDir }}/qttoolbareditor.patch
+
+# Create git patches for the project and some libraries
+[group('patches')]
+git-create-patches:
     @echo "transferDir: {{ transferDir }}"
     git diff --no-ext-diff --staged --binary > {{ transferDir }}/qownnotes.patch
     cd src/libraries/qmarkdowntextedit && git diff --no-ext-diff --staged --binary > {{ transferDir }}/qmarkdowntextedit.patch
@@ -158,6 +170,16 @@ fix-settings-ui-file:
 [group('debug')]
 process-trace:
     sudo lurk --attach `procs QOwnNotes | fzf --height 40% --layout reverse | awk '{print $1}'`
+
+# Generate the icons for the whole project based on icons/icon.svg and icons/icon-dark.svg
+[group('icons')]
+generate-icons:
+    cd icons &&./generate-icons.sh
+
+# Format the nix files
+[group('linter')]
+nix-format:
+    nix-shell -p fd nixfmt-rfc-style --run "fd -e nix --exec-batch nixfmt"
 
 # Format all justfiles
 [group('linter')]

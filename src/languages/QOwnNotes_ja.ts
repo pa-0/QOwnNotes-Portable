@@ -179,14 +179,6 @@
 <translation>グジャラート語</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>ポルトガル語（ブラジル）</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>ポルトガル語</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>デンマーク語</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>ペルシャ語</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1467,8 +1467,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>URLまたはノートへのリンクの作成</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1704,10 +1704,6 @@
 <translation>終了(&amp;Q)</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>ノートの検索(&amp;F)</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>現在のノートを削除(&amp;R)</translation>
 </message>
@@ -1905,6 +1901,10 @@
 <translation type="unfinished">Setup note folders / subfolders</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>&amp;QOwnNotes について…</translation>
 </message>
@@ -2087,10 +2087,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>タグパネルの下にメモリストを表示する</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>すべてのタグとサブフォルダーからノートを検索</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2450,6 +2446,10 @@
 <translation>寄付する</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Evernote からノートをインポート</translation>
 </message>
@@ -2716,6 +2716,14 @@ ownCloud サーバーのゴミ箱が有効な場合には、そこから復元�
 <message>
 <source>Saving temporary image</source>
 <translation>一時画像の保存中</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3590,16 +3598,16 @@ ownCloud サーバーのゴミ箱が有効な場合には、そこから復元�
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>'%1' フォルダー内のノートを表示 (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>すべてのノート</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>すべてのメモサブフォルダからのメモを表示する（％1）</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3850,6 +3858,12 @@ ownCloud サーバーのゴミ箱が有効な場合には、そこから復元�
 <numerusform>ノートパスの変更が検出されました。 出現するすべての&lt;strong&gt;％1 &lt;/ strong&gt;リンクを&lt;strong&gt;％2 &lt;/ strong&gt;に、ファイル名が&lt;strong&gt;％3 &lt;/ strong&gt;のリンクを&lt;strong&gt;％4 &lt;/ strongに置き換えますか &gt; &lt;strong&gt;％n &lt;/ strong&gt;ノートファイルにありますか？</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation type="unfinished">Image file exists</translation>
@@ -3891,10 +3905,6 @@ ownCloud サーバーのゴミ箱が有効な場合には、そこから復元�
 </translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;％1 &lt;/ strong&gt; &lt;br /&gt;最終変更日：％2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;パス: %1</translation>
 </message>
@@ -3913,6 +3923,10 @@ ownCloud サーバーのゴミ箱が有効な場合には、そこから復元�
 <message>
 <source>Light mode detected</source>
 <translation>ライトモードが検出されました</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5585,6 +5599,14 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>ノートテキストの末尾のスペースを自動的に削除する</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation type="unfinished">Maximum note file size:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
@@ -6925,6 +6947,14 @@ Your notes will stay intact!</source>
 <translation>孤立した添付ファイルのみを表示する</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>選択した添付ファイルを現在のメモに追加します</translation>
 </message>
@@ -7068,6 +7098,14 @@ Your notes will stay intact!</source>
 <message>
 <source>Refresh</source>
 <translation>更新</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7244,6 +7282,21 @@ Your notes will stay intact!</source>
 <message>
 <source>New tag</source>
 <translation>新規タグ</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -7950,6 +8003,10 @@ This cannot be undone!</source>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>アプリケーションをポータブルモードで実行します。</translation>

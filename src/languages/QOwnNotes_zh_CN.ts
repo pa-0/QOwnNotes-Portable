@@ -176,14 +176,6 @@
 <translation>古吉拉特语</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>葡萄牙语（巴西）</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>葡萄牙文</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>丹麦文</translation>
 </message>
@@ -430,6 +422,14 @@
 <message>
 <source>Persian</source>
 <translation>波斯语</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1223,7 +1223,7 @@
 <message>
 <source>Copy</source>
 <comment>as noun</comment>
-<translation type="unfinished">Copy</translation>
+<translation>复制</translation>
 </message>
 <message>
 <source>Remove schema</source>
@@ -1398,7 +1398,7 @@
 </message>
 <message>
 <source>The application will be restarted afterward.</source>
-<translation type="unfinished">The application will be restarted afterward.</translation>
+<translation>应用随后将重新启动。</translation>
 </message>
 <message>
 <source>Minimal</source>
@@ -1464,8 +1464,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>链接到网址或笔记</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1654,7 +1654,7 @@
 </message>
 <message>
 <source>Headings</source>
-<translation type="unfinished">Headings</translation>
+<translation>标题</translation>
 </message>
 <message>
 <source>Backlinks</source>
@@ -1699,10 +1699,6 @@
 <message>
 <source>&amp;Quit</source>
 <translation>退出(&amp;Q)</translation>
-</message>
-<message>
-<source>&amp;Find note</source>
-<translation>查找笔记(&amp;F)</translation>
 </message>
 <message>
 <source>&amp;Remove current note</source>
@@ -1902,6 +1898,10 @@
 <translation>设置笔记文件夹 / 子文件夹</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>关于 &amp;QOwnNotes…</translation>
 </message>
@@ -2084,10 +2084,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>在标签面板下显示笔记列表</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>在所有标签/子文件夹中查找</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2439,6 +2435,10 @@
 <translation>捐赠</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>从 Evernote 导入笔记</translation>
 </message>
@@ -2702,6 +2702,14 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <message>
 <source>Saving temporary image</source>
 <translation>保存临时图像</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3569,16 +3577,16 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>显示文件夹“%1”(%2) 中的笔记</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>所有笔记</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>显示所有笔记子文件夹中的笔记 (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3829,6 +3837,12 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <numerusform>检测到笔记路径已更改。 您是否要用 &lt;strong&gt;%2&lt;/strong&gt; 替换所有出现的&lt;strong&gt;%1&lt;/strong&gt; 链接 ，并在 &lt;strong&gt;%n&lt;/strong&gt; 个笔记文件中用 &lt;strong&gt;%4&lt;/strong&gt; 替换文件名为 &lt;strong&gt;%3&lt;/strong&gt; 的链接 ？</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation type="unfinished">Image file exists</translation>
@@ -3868,10 +3882,6 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <translation>双击将笔记附着至标签页</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;最近编辑时间: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;路径: %1</translation>
 </message>
@@ -3890,6 +3900,10 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <message>
 <source>Light mode detected</source>
 <translation>检测到亮色模式</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5419,7 +5433,7 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 </message>
 <message>
 <source>Status bar</source>
-<translation type="unfinished">Status bar</translation>
+<translation>状态条</translation>
 </message>
 <message>
 <source>Show note path</source>
@@ -5555,37 +5569,45 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>自动删除笔记文本中的末尾空格</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation>最大注释文件大小:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
-<translation type="unfinished">Search script repository for AI integration scripts</translation>
+<translation>搜索人工智能集成脚本库</translation>
 </message>
 <message>
 <source>API keys</source>
-<translation type="unfinished">API keys</translation>
+<translation>API秘钥</translation>
 </message>
 <message>
 <source>OpenAI API key:</source>
-<translation type="unfinished">OpenAI API key:</translation>
+<translation>OpenAI API 密钥:</translation>
 </message>
 <message>
 <source>Create Groq API key</source>
-<translation type="unfinished">Create Groq API key</translation>
+<translation>创建 Groq API 密钥</translation>
 </message>
 <message>
 <source>Create OpenAI API key</source>
-<translation type="unfinished">Create OpenAI API key</translation>
+<translation>创建 Groq API 密钥</translation>
 </message>
 <message>
 <source>Test connection</source>
 <comment>"Test" as verb</comment>
-<translation type="unfinished">Test connection</translation>
+<translation>测试连接</translation>
 </message>
 <message>
 <source>AI backends added via the scripting engine</source>
-<translation type="unfinished">AI backends added via the scripting engine</translation>
+<translation>通过脚本引擎添加 AI 后端</translation>
 </message>
 <message>
 <source>To make use of the AI backends, you can either use the scripting command &lt;a href="%1"&gt;aiComplete&lt;/a&gt;, or look in the script repository for already-written scripts.</source>
-<translation type="unfinished">To make use of the AI backends, you can either use the scripting command &lt;a href="%1"&gt;aiComplete&lt;/a&gt;, or look in the script repository for already-written scripts.</translation>
+<translation>要利用 AI 后端，您可以使用脚本命令 &lt;a href="%1"&gt;aiComplete&lt;/a&gt;，或者在脚本库中查找已经编写的脚本。</translation>
 </message>
 <message>
 <source>You can use the scripting hook &lt;a href="%1"&gt;openAiBackendsHook&lt;/a&gt; to add more OpenAI API compatible backends.</source>
@@ -5597,11 +5619,11 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 </message>
 <message>
 <source>Groq API key:</source>
-<translation type="unfinished">Groq API key:</translation>
+<translation>Groq API 密钥:</translation>
 </message>
 <message>
 <source>API key</source>
-<translation type="unfinished">API key</translation>
+<translation>API秘钥</translation>
 </message>
 <message>
 <source>Show line numbers</source>
@@ -5629,7 +5651,7 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 </message>
 <message>
 <source>Select the path of the git binary</source>
-<translation type="unfinished">Select the path of the git binary</translation>
+<translation>选择 git 二进制文件的路径</translation>
 </message>
 <message>
 <source>Regular expressions of note files to ignore, separated by ";"</source>
@@ -6879,6 +6901,14 @@ Your notes will stay intact!</source>
 <translation>仅显示孤立的附件</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>将选定的附件添加到当前笔记</translation>
 </message>
@@ -7022,6 +7052,14 @@ Your notes will stay intact!</source>
 <message>
 <source>Refresh</source>
 <translation>刷新</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7198,6 +7236,21 @@ Your notes will stay intact!</source>
 <message>
 <source>New tag</source>
 <translation>新建标签</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -7900,6 +7953,10 @@ This cannot be undone!</source>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>以便携模式运行应用程序。</translation>

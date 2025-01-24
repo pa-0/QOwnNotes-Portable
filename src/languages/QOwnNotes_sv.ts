@@ -178,14 +178,6 @@
 <translation>Gujarati</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>Portugisiska (brasilianska)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portugisiska</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>Danska</translation>
 </message>
@@ -434,6 +426,14 @@
 <translation>Perser</translation>
 </message>
 <message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
+</message>
+<message>
 <source>Romanian</source>
 <translation>Rumänska</translation>
 </message>
@@ -628,7 +628,7 @@
 </message>
 <message>
 <source>Invalid XML!</source>
-<translation type="unfinished">Invalid XML!</translation>
+<translation>Ogiltig XML!</translation>
 </message>
 <message>
 <source>Invalid XML found in note &lt;b&gt;%1&lt;/b&gt;! The import might be stopped at this point.</source>
@@ -839,7 +839,7 @@
 </message>
 <message>
 <source>Default: %1</source>
-<translation type="unfinished">Default: %1</translation>
+<translation>Standard: %1</translation>
 </message>
 <message>
 <source>Unknown option: %1</source>
@@ -1024,7 +1024,7 @@
 </message>
 <message>
 <source>Delete</source>
-<translation>Ta bort</translation>
+<translation>Radera</translation>
 </message>
 <message>
 <source>Export schema</source>
@@ -1249,11 +1249,11 @@
 <name>HtmlPreviewWidget</name>
 <message>
 <source>Copy</source>
-<translation type="unfinished">Copy</translation>
+<translation>Kopiera</translation>
 </message>
 <message>
 <source>Copy link</source>
-<translation type="unfinished">Copy link</translation>
+<translation>Kopiera länk</translation>
 </message>
 <message>
 <source>Reset zoom</source>
@@ -1471,8 +1471,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>Länka en url eller anteckning</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1712,10 +1712,6 @@
 <translation>Avsluta</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>Sök anteckning</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>Ta bo&amp;rt aktuell anteckning</translation>
 </message>
@@ -1845,7 +1841,7 @@
 </message>
 <message>
 <source>Edit</source>
-<translation>&amp;Redigera</translation>
+<translation>Redigera</translation>
 </message>
 <message>
 <source>Versioning</source>
@@ -1911,6 +1907,10 @@
 <message>
 <source>Setup note folders / subfolders</source>
 <translation type="unfinished">Setup note folders / subfolders</translation>
+</message>
+<message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
 </message>
 <message>
 <source>About &amp;QOwnNotes…</source>
@@ -2095,10 +2095,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>Visa noteringslista under taggpanelen</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Sök anteckningar i alla taggar / undermappar</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2457,6 +2453,10 @@
 <translation>Donera</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Importera anteckningar från Evernote</translation>
 </message>
@@ -2738,13 +2738,21 @@ Om papperskorgen är aktiverad på din ownCloud-server bör du kunna återställ
 <translation>Sparar temporär bild</translation>
 </message>
 <message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
+</message>
+<message>
 <source>Ln %1, Col %2</source>
 <comment>Line / Column</comment>
 <translation type="unfinished">Ln %1, Col %2</translation>
 </message>
 <message>
 <source>Line %1, Column %2</source>
-<translation type="unfinished">Line %1, Column %2</translation>
+<translation>Rad %1, Kolumn %2</translation>
 </message>
 <message numerus="yes">
 <source>%n selected</source>
@@ -3623,16 +3631,16 @@ Om papperskorgen är aktiverad på din ownCloud-server bör du kunna återställ
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation type="unfinished">show notes in folder '%1' (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Alla anteckningar</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation type="unfinished">Show notes from all note subfolders (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3834,7 +3842,7 @@ Om papperskorgen är aktiverad på din ownCloud-server bör du kunna återställ
 </message>
 <message>
 <source>Hide password</source>
-<translation type="unfinished">Hide password</translation>
+<translation>Dölj lösenord</translation>
 </message>
 </context>
 <context>
@@ -3885,6 +3893,13 @@ Om papperskorgen är aktiverad på din ownCloud-server bör du kunna återställ
 <numerusform>En ändring av notvägen upptäcktes. Vill du ersätta alla förekomster av &lt;strong&gt;%1&lt;/strong&gt; länkar med &lt;strong&gt;%2&lt;/strong&gt; och länkar med filnamn &lt;strong&gt;%3&lt;/strong&gt; med &lt;strong&gt;%4&lt;/strong&gt; i &lt;strong&gt;%n&lt;/strong&gt; anteckningsfiler?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation type="unfinished">Image file exists</translation>
@@ -3927,10 +3942,6 @@ Om papperskorgen är aktiverad på din ownCloud-server bör du kunna återställ
 </translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation type="unfinished">&lt;br /&gt;path: %1</translation>
 </message>
@@ -3949,6 +3960,10 @@ Om papperskorgen är aktiverad på din ownCloud-server bör du kunna återställ
 <message>
 <source>Light mode detected</source>
 <translation type="unfinished">Light mode detected</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5033,7 +5048,7 @@ Testa själv om du får synkroniseringskonflikter och ställ ett högre värde o
 </message>
 <message>
 <source>Your ownCloud username</source>
-<translation>Ditt användarnamn för ownCloud</translation>
+<translation>Ditt ownCloud-användarnamn</translation>
 </message>
 <message>
 <source>Password:</source>
@@ -5624,6 +5639,14 @@ Testa själv om du får synkroniseringskonflikter och ställ ett högre värde o
 <translation>Ta automatiskt bort spårutrymmen i anteckningen</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation type="unfinished">Notes larger than this will not be shown in the note list</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation type="unfinished">Maximum note file size:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
@@ -5633,7 +5656,7 @@ Testa själv om du får synkroniseringskonflikter och ställ ett högre värde o
 </message>
 <message>
 <source>OpenAI API key:</source>
-<translation type="unfinished">OpenAI API key:</translation>
+<translation>OpenAI API-nyckel:</translation>
 </message>
 <message>
 <source>Create Groq API key</source>
@@ -5769,7 +5792,7 @@ Testa själv om du får synkroniseringskonflikter och ställ ett högre värde o
 </message>
 <message>
 <source>Server URL:</source>
-<translation type="unfinished">Server URL:</translation>
+<translation>Server-URL:</translation>
 </message>
 <message>
 <source>Show QR code</source>
@@ -6263,7 +6286,7 @@ Testa själv om du får synkroniseringskonflikter och ställ ett högre värde o
 </message>
 <message>
 <source>Your CalDAV username</source>
-<translation>Ditt CalDAV användarnamn</translation>
+<translation>Ditt CalDAV-användarnamn</translation>
 </message>
 <message>
 <source>Your CalDAV password</source>
@@ -6960,6 +6983,14 @@ Dina anteckningar kommer att förbli intakta!</translation>
 <translation type="unfinished">Only show orphaned attachments</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation type="unfinished">Only show attachments that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation type="unfinished">Add selected attachments to the current note</translation>
 </message>
@@ -6985,11 +7016,11 @@ Dina anteckningar kommer att förbli intakta!</translation>
 </message>
 <message>
 <source>File size:</source>
-<translation type="unfinished">File size:</translation>
+<translation>Filstorlek:</translation>
 </message>
 <message>
 <source>File type:</source>
-<translation type="unfinished">File type:</translation>
+<translation>Filtyp:</translation>
 </message>
 <message>
 <source>File path:</source>
@@ -7106,6 +7137,14 @@ Dina anteckningar kommer att förbli intakta!</translation>
 <translation type="unfinished">Refresh</translation>
 </message>
 <message>
+<source>Only show images that are used in the current note</source>
+<translation type="unfinished">Only show images that are used in the current note</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation type="unfinished">Only show from current note</translation>
+</message>
+<message>
 <source>Used in notes:</source>
 <translation type="unfinished">Used in notes:</translation>
 </message>
@@ -7170,7 +7209,7 @@ Dina anteckningar kommer att förbli intakta!</translation>
 </message>
 <message>
 <source>&amp;Delete images</source>
-<translation type="unfinished">&amp;Delete images</translation>
+<translation>&amp;Radera bilder</translation>
 </message>
 <message>
 <source>&amp;Add images to current note</source>
@@ -7281,6 +7320,21 @@ Dina anteckningar kommer att förbli intakta!</translation>
 <message>
 <source>New tag</source>
 <translation>Ny etikett</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -7990,6 +8044,10 @@ Detta kan inte göras ogjort!</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>Kör programmet i portabelt läge.</translation>

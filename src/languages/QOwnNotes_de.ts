@@ -179,14 +179,6 @@
 <translation>Gujarati</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>Portugisisch (Brasilien)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portugisisch</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>Dänisch</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>Persisch</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation type="unfinished">Portuguese (Brazilian)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation type="unfinished">Portuguese</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1472,8 +1472,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>Link zu URL oder Notiz einfügen</translation>
+<source>Link to a URL or note</source>
+<translation>Link zu einer URL oder Notiz einfügen</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1713,10 +1713,6 @@
 <translation>&amp;Beenden</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>Notiz &amp;finden</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>Aktuelle Notiz &amp;löschen</translation>
 </message>
@@ -1914,6 +1910,10 @@
 <translation>Notizordner / Unterordner einstellen</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation type="unfinished">&amp;Find text in notes</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>Über &amp;QOwnNotes…</translation>
 </message>
@@ -2097,10 +2097,6 @@
 <source>Show note list under tag panel</source>
 <translation>Notizliste unter Schlagwortbereich anzeigen
 </translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Suchen von Notizen in allen Schlagworten/Unterordnern</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2452,6 +2448,10 @@
 <translation>Spenden</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation type="unfinished">Find text in notes in all tags / subfolders</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Notizen von Evernote importieren</translation>
 </message>
@@ -2731,6 +2731,14 @@ Falls Sie die Papierkorb-App auf Ihrem ownCloud-Server aktiviert haben, sollten 
 <message>
 <source>Saving temporary image</source>
 <translation>Temporäres Bild speichern</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation type="unfinished">Note folder does not exist!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation type="unfinished">Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3611,16 +3619,16 @@ Falls Sie die Papierkorb-App auf Ihrem ownCloud-Server aktiviert haben, sollten 
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>Notizen im Ordner '%1' (%2) anzeigen</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Alle Notizen</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>Notizen aus allen Notizunterordnern anzeigen (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3873,6 +3881,13 @@ Falls Sie die Papierkorb-App auf Ihrem ownCloud-Server aktiviert haben, sollten 
 <numerusform>Der Notizpfad wurde geändert. Sollen alle Vorkommnisse von &lt;strong&gt;%1&lt;/strong&gt; Links durch &lt;strong&gt;%2&lt;/strong&gt;und Links mit Dateinamen &lt;strong&gt;%3&lt;/strong&gt; durch &lt;strong&gt;%4&lt;/strong&gt; in den &lt;strong&gt;%n&lt;/strong&gt; Notizdateien ersetzt werden?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>Bilddatei existiert</translation>
@@ -3913,10 +3928,6 @@ Falls Sie die Papierkorb-App auf Ihrem ownCloud-Server aktiviert haben, sollten 
 <translation>Auf Registerkarte doppelklicken um Notiz anzuheften</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;zuletzt bearbeitet: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;Pfad: %1</translation>
 </message>
@@ -3935,6 +3946,10 @@ Falls Sie die Papierkorb-App auf Ihrem ownCloud-Server aktiviert haben, sollten 
 <message>
 <source>Light mode detected</source>
 <translation>Heller Modus erkannt</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5601,16 +5616,24 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>Nachfolgende Leerzeichen im Notiztext automatisch entfernen</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation>Notizen, die größer als dieser Wert sind, werden in der Notizliste nicht angezeigt</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation>Maximale Größe einer Notizdatei:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation type="unfinished">Search script repository for AI integration scripts</translation>
 </message>
 <message>
 <source>API keys</source>
-<translation type="unfinished">API keys</translation>
+<translation>API-Schlüssel</translation>
 </message>
 <message>
 <source>OpenAI API key:</source>
-<translation type="unfinished">OpenAI API key:</translation>
+<translation>OpenAI API-Schlüssel</translation>
 </message>
 <message>
 <source>Create Groq API key</source>
@@ -5647,7 +5670,7 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 </message>
 <message>
 <source>API key</source>
-<translation type="unfinished">API key</translation>
+<translation>API-Schlüssel</translation>
 </message>
 <message>
 <source>Show line numbers</source>
@@ -6542,7 +6565,7 @@ Fehlermeldung: </translation>
 </message>
 <message>
 <source>AI backend: %1</source>
-<translation type="unfinished">AI backend: %1</translation>
+<translation>AI-Backend: %1</translation>
 </message>
 <message>
 <source>API base URL</source>
@@ -6931,6 +6954,14 @@ Your notes will stay intact!</source>
 <translation>Nur verwaiste Dateianhänge anzeigen</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation>Nur Anhänge anzeigen, die in der aktuellen Notiz verwendet werden</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>Nur von der aktuellen Notiz anzeigen</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>Ausgewählte Anhänge zur aktuellen Notiz hinzufügen</translation>
 </message>
@@ -7075,6 +7106,14 @@ Your notes will stay intact!</source>
 <message>
 <source>Refresh</source>
 <translation>Aktualisierung</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation>Nur Bilder anzeigen, die in der aktuellen Notiz verwendet werden</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>Nur von der aktuellen Notiz anzeigen</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7252,6 +7291,21 @@ Your notes will stay intact!</source>
 <message>
 <source>New tag</source>
 <translation>Neues Schlagwort</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation type="unfinished">Text difference</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation type="unfinished">Differences:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation type="unfinished">Accept change?</translation>
 </message>
 </context>
 <context>
@@ -7957,6 +8011,10 @@ Kann nicht rückgängig gemacht werden!</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>Die Anwendung wird im portablen Modus gestartet.</translation>

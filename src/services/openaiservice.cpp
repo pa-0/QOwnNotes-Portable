@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 Patrizio Bekerle -- <patrizio@bekerle.com>
+ * Copyright (c) 2014-2025 Patrizio Bekerle -- <patrizio@bekerle.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -92,10 +92,8 @@ void OpenAiService::initializeBackends() {
     SettingsService settings;
     _backendApiKeys[QStringLiteral("groq")] = CryptoService::instance()->decryptToString(
         settings.value(getApiKeySettingsKeyForBackend(QStringLiteral("groq"))).toString());
-    ;
     _backendApiKeys[QStringLiteral("openai")] = CryptoService::instance()->decryptToString(
         settings.value(getApiKeySettingsKeyForBackend(QStringLiteral("openai"))).toString());
-    ;
 
     _backendNames.clear();
     _backendNames[QStringLiteral("groq")] = QStringLiteral("Groq");

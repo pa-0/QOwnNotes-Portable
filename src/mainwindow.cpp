@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 Patrizio Bekerle -- <patrizio@bekerle.com>
+ * Copyright (c) 2014-2025 Patrizio Bekerle -- <patrizio@bekerle.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -266,13 +266,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     ui->actionPaste_image->setShortcut(Qt::CTRL | Qt::ALT | Qt::Key_V);
 #endif
 
-    // adding some alternate shortcuts for changing the current note
-    auto *shortcut = new QShortcut(QKeySequence(QStringLiteral("Ctrl+PgDown")), this);
-    connect(shortcut, &QShortcut::activated, this, &MainWindow::on_actionNext_note_triggered);
-
-    shortcut = new QShortcut(QKeySequence(QStringLiteral("Ctrl+PgUp")), this);
-    connect(shortcut, &QShortcut::activated, this, &MainWindow::on_actionPrevious_Note_triggered);
-
     _autoReadOnlyModeTimer = new QTimer(this);
     _autoReadOnlyModeTimer->setSingleShot(true);
     connect(_autoReadOnlyModeTimer, &QTimer::timeout, this, &MainWindow::autoReadOnlyModeTimerSlot);
@@ -507,6 +500,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // attempt to quit the application when a logout is initiated
     connect(qApp, &QApplication::commitDataRequest, this, &MainWindow::on_action_Quit_triggered);
+
+    // Register the LogWidget::LogType type so showStatusBarMessage there doesn't throw a warning,
+    // like this: `QMetaMethod::invoke: Unable to handle unregistered datatype 'LogWidget::LogType'`
+    qRegisterMetaType<LogWidget::LogType>("LogWidget::LogType");
 
     automaticScriptUpdateCheck();
 
@@ -1118,7 +1115,8 @@ void MainWindow::reloadTodoLists() {
             ownCloud->todoGetTodoList(calendar, nullptr);
         }
 
-        showStatusBarMessage(tr("Your tasks are being loaded from your server"), 4000);
+        showStatusBarMessage(tr("Your tasks are being loaded from your server"),
+                             QStringLiteral("☑️"), 4000);
 
         // generate the system tray context menu to show modified tasks
         // in 15 sec (because we don't know when all new tasks will be loaded)
@@ -1809,13 +1807,25 @@ void MainWindow::changeDistractionFreeMode(const bool enabled) {
 /**
  * Shows a status bar message if not in distraction free mode
  */
-void MainWindow::showStatusBarMessage(const QString &message, const int timeout) {
-    if (!isInDistractionFreeMode()) {
-        ui->statusBar->showMessage(message, timeout);
+void MainWindow::showStatusBarMessage(const QString &message, const QString &symbol, int timeout) {
+    // Add a symbol to the message
+    const QString text = symbol.isEmpty() ? message : QStringLiteral("%1 %2").arg(symbol, message);
+
+    // If timeout is smaller than 100, it is in seconds
+    if (timeout < 100) {
+        timeout = timeout * 1000;
     }
 
-    // write to the log widget
-    emit log(LogWidget::StatusLogType, message);
+    if (!isInDistractionFreeMode()) {
+        ui->statusBar->showMessage(text, timeout);
+    }
+
+    // Write to the log widget
+    emit log(LogWidget::StatusLogType, text);
+}
+
+void MainWindow::showStatusBarMessage(const QString &message, int timeout) {
+    showStatusBarMessage(message, QString(), timeout);
 }
 
 /**
@@ -2096,7 +2106,7 @@ int MainWindow::openNoteDiffDialog(Note changedNote) {
     //    qDebug() << __func__ << " - 'text1': " << text1;
     //    qDebug() << __func__ << " - 'text2': " << text2;
 
-    diff_match_patch *diff = new diff_match_patch();
+    auto *diff = new diff_match_patch();
     const QList<Diff> diffList = diff->diff_main(text1, text2);
 
     const QString html = diff->diff_prettyHtml(diffList);
@@ -2832,7 +2842,8 @@ void MainWindow::notesWereModified(const QString &str) {
                 return;
             }
 
-            showStatusBarMessage(tr("Current note was modified externally"), 5000);
+            showStatusBarMessage(tr("Current note was modified externally"), QStringLiteral("🔄"),
+                                 5000);
 
             // if we don't want to get notifications at all
             // external modifications check if we really need one
@@ -2854,7 +2865,7 @@ void MainWindow::notesWereModified(const QString &str) {
 
                     showStatusBarMessage(
                         tr("Overwriting external changes of: %1").arg(currentNote.getFileName()),
-                        3000);
+                        QStringLiteral("💾"), 3000);
 
                     // the note text has to be stored newly because the
                     // external change is already in the note table entry
@@ -2866,7 +2877,7 @@ void MainWindow::notesWereModified(const QString &str) {
                 case NoteDiffDialog::Reload:
                     showStatusBarMessage(
                         tr("Loading external changes from: %1").arg(currentNote.getFileName()),
-                        3000);
+                        QStringLiteral("🔄"), 3000);
                     updateNoteTextFromDisk(note);
                     break;
 
@@ -2898,6 +2909,7 @@ void MainWindow::notesWereModified(const QString &str) {
                 const bool noteWasStored = note.storeNoteTextFileToDisk();
                 showStatusBarMessage(noteWasStored ? tr("Stored current note to disk")
                                                    : tr("Current note could not be stored to disk"),
+                                     noteWasStored ? QStringLiteral("💾") : QStringLiteral("❌"),
                                      3000);
 
                 // rebuild and reload the notes directory list
@@ -2919,7 +2931,8 @@ void MainWindow::notesWereModified(const QString &str) {
     } else {
         qDebug() << "other note was changed: " << str;
 
-        showStatusBarMessage(tr("Note was modified externally: %1").arg(str), 5000);
+        showStatusBarMessage(tr("Note was modified externally: %1").arg(str), QStringLiteral("🔄"),
+                             5000);
 
         // rebuild and reload the notes directory list
         buildNotesIndexAndLoadNoteDirectoryList();
@@ -2939,7 +2952,7 @@ void MainWindow::notesDirectoryWasModified(const QString &str) {
     }
 
     qDebug() << "notesDirectoryWasModified: " << str;
-    showStatusBarMessage(tr("Notes directory was modified externally"), 5000);
+    showStatusBarMessage(tr("Notes directory was modified externally"), QStringLiteral("🔄"), 5000);
 
     // rebuild and reload the notes directory list
     buildNotesIndexAndLoadNoteDirectoryList();
@@ -3012,7 +3025,8 @@ void MainWindow::storeUpdatedNotesToDisk() {
 
         qDebug() << __func__ << " - 'count': " << count;
 
-        showStatusBarMessage(tr("Stored %n note(s) to disk", "", count), 3000);
+        showStatusBarMessage(tr("Stored %n note(s) to disk", "", count), QStringLiteral("💾"),
+                             3000);
 
         if (currentNoteChanged) {
             // strip trailing spaces of the current note (if enabled)
@@ -3209,8 +3223,7 @@ bool MainWindow::buildNotesIndex(int noteSubFolderId, bool forceRebuild) {
             QStringList({"Markdown Cheatsheet.md", "Welcome to QOwnNotes.md"});
 
         // copy note files to the notes path
-        for (int i = 0; i < filenames.size(); ++i) {
-            const QString &filename = filenames.at(i);
+        for (const auto &filename : filenames) {
             const QString destinationFile = this->notesPath + QDir::separator() + filename;
             QFile sourceFile(QStringLiteral(":/demonotes/") + filename);
             sourceFile.copy(destinationFile);
@@ -3463,13 +3476,13 @@ void MainWindow::removeConflictedNotesDatabaseCopies() {
                 QFile::remove(file)
                     ? tr("Removed duplicate conflicted database: %1").arg(file)
                     : tr("Could not remove duplicate conflicted database: %1").arg(file),
-                4000);
+                QStringLiteral("🗄️"), 4000);
         } else if (DatabaseService::mergeNoteFolderDatabase(file)) {
             showStatusBarMessage(
                 QFile::remove(file)
                     ? tr("Removed merged conflicted database: %1").arg(file)
                     : tr("Could not remove merged conflicted database: %1").arg(file),
-                4000);
+                QStringLiteral("🗄️"), 4000);
         } else {
             files << file;
         }
@@ -3502,7 +3515,8 @@ void MainWindow::removeConflictedNotesDatabaseCopies() {
         }
     }
 
-    showStatusBarMessage(tr("Removed %n conflicted database copies", "", count));
+    showStatusBarMessage(tr("Removed %n conflicted database copies", "", count),
+                         QStringLiteral("🗄️"));
 }
 
 /**
@@ -3827,7 +3841,7 @@ void MainWindow::setCurrentNote(Note note, bool updateNoteText, bool updateSelec
     // update file path label
     _noteFilePathLabel->updateText();
 
-    //    putenv(QString("QOWNNOTES_CURRENT_NOTE_PATH=" + currentNote
+    //    putenv(QStringLiteral("QOWNNOTES_CURRENT_NOTE_PATH=%1").arg(currentNote)
     //            .fullNoteFilePath()).toLatin1().data());
     //    setenv("QOWNNOTES_CURRENT_NOTE_PATH",
     //           currentNote.fullNoteFilePath().toLatin1().data(),
@@ -4165,7 +4179,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
                 }
 
                 return QMainWindow::eventFilter(obj, event);
-                ;
             }
         } else if (obj == ui->searchLineEdit) {
             bool downSelectNote = false;
@@ -4185,7 +4198,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
                     // open the completer
                     ui->searchLineEdit->completer()->complete();
                     return QMainWindow::eventFilter(obj, event);
-                    ;
                 } else {
                     // if nothing was found in the completer we want to jump
                     // to the note list
@@ -4212,7 +4224,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
                 return true;
             }
             return QMainWindow::eventFilter(obj, event);
-            ;
         } else if (obj == activeNoteTextEdit()) {
             // check if we want to leave the distraction free mode and the
             // search widget is not visible (because we want to close that
@@ -4225,7 +4236,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
             }
 
             return QMainWindow::eventFilter(obj, event);
-            ;
         } else if (obj == ui->noteTreeWidget) {
             // set focus to the note text edit if Key_Return or Key_Tab were
             // pressed in the notes list
@@ -4246,7 +4256,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event) {
                 return true;
             }
             return QMainWindow::eventFilter(obj, event);
-            ;
         } else if (obj == ui->tagTreeWidget) {
             if ((keyEvent->key() == Qt::Key_Delete) || (keyEvent->key() == Qt::Key_Backspace)) {
                 removeSelectedTags();
@@ -4920,7 +4929,8 @@ void MainWindow::tagSelectedNotes(const Tag &tag) {
         reloadTagTree();
 
         showStatusBarMessage(
-            tr("%n note(s) were tagged with \"%2\"", "", tagCount).arg(tag.getName()), 5000);
+            tr("%n note(s) were tagged with \"%2\"", "", tagCount).arg(tag.getName()),
+            QStringLiteral("🏷️"), 5000);
 
         // turn off the workaround again
         directoryWatcherWorkaround(false, true);
@@ -5869,6 +5879,12 @@ void MainWindow::on_action_Find_note_triggered() {
         return;
     }
 
+    // Search for the selected text if there is any
+    const auto selectedText = activeNoteTextEdit()->textCursor().selectedText();
+    if (!selectedText.isEmpty()) {
+        this->ui->searchLineEdit->setText(selectedText);
+    }
+
     changeDistractionFreeMode(false);
     this->ui->searchLineEdit->setFocus();
     this->ui->searchLineEdit->selectAll();
@@ -5954,7 +5970,7 @@ void MainWindow::jumpToNoteOrCreateNew(bool disableLoadNoteDirectoryList) {
         const bool noteWasStored = note.storeNoteTextFileToDisk();
         showStatusBarMessage(noteWasStored ? tr("Stored current note to disk")
                                            : tr("Current note could not be stored to disk"),
-                             3000);
+                             noteWasStored ? QStringLiteral("💾") : QStringLiteral("❌"), 3000);
 
         {
             const QSignalBlocker blocker2(ui->noteTreeWidget);
@@ -6315,7 +6331,7 @@ void MainWindow::on_actionShow_versions_triggered() {
     showStatusBarMessage(
         Utils::Misc::replaceOwnCloudText(tr("Note versions are currently loaded from your ownCloud "
                                             "server")),
-        20000);
+        QStringLiteral("🛜"), 20000);
 
     OwnCloudService *ownCloud = OwnCloudService::instance();
     ownCloud->loadVersions(this->currentNote.relativeNoteFilePath(QStringLiteral("/")));
@@ -6328,7 +6344,7 @@ void MainWindow::on_actionShow_trash_triggered() {
     showStatusBarMessage(
         Utils::Misc::replaceOwnCloudText(tr("Trashed notes are currently loaded from your ownCloud"
                                             " server")),
-        20000);
+        QStringLiteral("🗑"), 20000);
 
     OwnCloudService *ownCloud = OwnCloudService::instance();
     ownCloud->loadTrash();
@@ -6548,7 +6564,7 @@ bool MainWindow::insertTextAsAttachment(const QString &text, const QString &titl
                                         QStringLiteral("text-XXXXXX.txt"));
 
     if (!tempFile->open()) {
-        showStatusBarMessage(tr("Temporary file can't be opened"), 3000);
+        showStatusBarMessage(tr("Temporary file can't be opened"), QStringLiteral("❌"), 3000);
 
         return false;
     }
@@ -6564,7 +6580,8 @@ bool MainWindow::insertTextAsAttachment(const QString &text, const QString &titl
     bool result = insertAttachment(file, title);
 
     if (result) {
-        showStatusBarMessage(tr("Inserted text as text attachment file"), 3000);
+        showStatusBarMessage(tr("Inserted text as text attachment file"), QStringLiteral("📄"),
+                             3000);
     }
 
     // for some reason the temp file on disk will not be removed automatically
@@ -6864,7 +6881,7 @@ void MainWindow::storeNoteBookmark(int slot) {
                                QVariant::fromValue(item));
 
     showStatusBarMessage(tr("Bookmarked note position at slot %1").arg(QString::number(slot)),
-                         3000);
+                         QStringLiteral("🔖"), 3000);
 }
 
 void MainWindow::loadNoteBookmarks() {
@@ -6891,7 +6908,8 @@ void MainWindow::gotoNoteBookmark(int slot) {
         setCurrentNoteFromHistoryItem(item);
 
         showStatusBarMessage(
-            tr("Jumped to bookmark position at slot %1").arg(QString::number(slot)), 3000);
+            tr("Jumped to bookmark position at slot %1").arg(QString::number(slot)),
+            QStringLiteral("🔖"), 3000);
     }
 }
 
@@ -7064,19 +7082,20 @@ void MainWindow::handleInsertingFromMimeData(const QMimeData *mimeData) {
                     }
                     // only allow image files to be inserted as image
                 } else if (isValidMediaFile(file)) {
-                    showStatusBarMessage(tr("Inserting image"), 0);
+                    showStatusBarMessage(tr("Inserting image"), QStringLiteral("🖼️"), 0);
 
                     // insert the image
                     insertMedia(file);
 
-                    showStatusBarMessage(tr("Done inserting image"), 3000);
+                    showStatusBarMessage(tr("Done inserting image"), QStringLiteral("🖼️"), 3000);
                 } else {
-                    showStatusBarMessage(tr("Inserting attachment"), 0);
+                    showStatusBarMessage(tr("Inserting attachment"), QStringLiteral("🖼️"), 0);
 
                     // inserting the attachment
                     insertAttachment(file);
 
-                    showStatusBarMessage(tr("Done inserting attachment"), 3000);
+                    showStatusBarMessage(tr("Done inserting attachment"), QStringLiteral("📥️"),
+                                         3000);
                 }
 
                 delete file;
@@ -7112,14 +7131,14 @@ void MainWindow::handleInsertingFromMimeData(const QMimeData *mimeData) {
         }
 
         if (!message.isEmpty()) {
-            showStatusBarMessage(message, 5000);
+            showStatusBarMessage(message, QStringLiteral("⤵️️"), 5000);
         }
     } else if (mimeData->hasImage()) {
         // get the image from mime data
         QImage image = mimeData->imageData().value<QImage>();
 
         if (!image.isNull()) {
-            showStatusBarMessage(tr("Saving temporary image"), 0);
+            showStatusBarMessage(tr("Saving temporary image"), QStringLiteral("🖼️"), 0);
 
             QTemporaryFile tempFile(QDir::tempPath() + QDir::separator() +
                                     QStringLiteral("qownnotes-media-XXXXXX.png"));
@@ -7131,13 +7150,14 @@ void MainWindow::handleInsertingFromMimeData(const QMimeData *mimeData) {
                 // insert media into note
                 auto *file = new QFile(tempFile.fileName());
 
-                showStatusBarMessage(tr("Inserting image"), 0);
+                showStatusBarMessage(tr("Inserting image"), QStringLiteral("🖼️"), 0);
                 insertMedia(file);
                 delete file;
 
-                showStatusBarMessage(tr("Done inserting image"), 3000);
+                showStatusBarMessage(tr("Done inserting image"), QStringLiteral("🖼️"), 3000);
             } else {
-                showStatusBarMessage(tr("Temporary file can't be opened"), 3000);
+                showStatusBarMessage(tr("Temporary file can't be opened"), QStringLiteral("❌️"),
+                                     3000);
             }
         }
     } else if (mimeData->hasText() || mimeData->hasHtml()) {
@@ -7147,15 +7167,20 @@ void MainWindow::handleInsertingFromMimeData(const QMimeData *mimeData) {
         const QPoint globalPos = textEdit->mapToGlobal(rect.bottomRight());
         QMenu menu;
 
+        // We need to fetch the text and html from the mime data here, because the mimeData object
+        // may not be available anymore after the menu was closed and accessing it may cause a crash
+        const auto text = mimeData->text();
+        const auto html = mimeData->html();
+
         QAction *htmlAction = menu.addAction(tr("Paste &HTML as Markdown"));
         QAction *textAttachmentAction = menu.addAction(tr("Paste as &text file attachment"));
         QAction *selectedItem = menu.exec(globalPos);
 
         if (selectedItem == htmlAction) {
-            insertHtmlAsMarkdownIntoCurrentNote(mimeData->html());
+            insertHtmlAsMarkdownIntoCurrentNote(html);
         } else if (selectedItem == textAttachmentAction) {
             // Insert text as attachment file
-            insertTextAsAttachment(mimeData->text());
+            insertTextAsAttachment(text);
         }
     }
 }
@@ -7191,7 +7216,8 @@ void MainWindow::insertHtmlAsMarkdownIntoCurrentNote(QString html) {
                 continue;
             }
 
-            showStatusBarMessage(tr("Downloading %1").arg(imageUrl.toString()), 0);
+            showStatusBarMessage(tr("Downloading %1").arg(imageUrl.toString()), QStringLiteral("⬇️️"),
+                                 0);
 
             // download the image and get the media Markdown code for it
             markdownCode = currentNote.downloadUrlToMedia(imageUrl);
@@ -7203,7 +7229,7 @@ void MainWindow::insertHtmlAsMarkdownIntoCurrentNote(QString html) {
         }
     }
 
-    showStatusBarMessage(tr("Downloading images finished"), 3000);
+    showStatusBarMessage(tr("Downloading images finished"), QStringLiteral("🖼️"), 3000);
 
     // remove all html tags
     static const QRegularExpression tagRE(QStringLiteral("<.+?>"));
@@ -7339,14 +7365,14 @@ void MainWindow::on_actionFormat_text_italic_triggered() { applyFormatter(QStrin
  * Increases the note text font size by one
  */
 void MainWindow::on_action_Increase_note_text_size_triggered() {
-    Q_EMIT activeNoteTextEdit() -> zoomIn();
+    Q_EMIT activeNoteTextEdit()->zoomIn();
 }
 
 /**
  * Decreases the note text font size by one
  */
 void MainWindow::on_action_Decrease_note_text_size_triggered() {
-    Q_EMIT activeNoteTextEdit() -> zoomOut();
+    Q_EMIT activeNoteTextEdit()->zoomOut();
 }
 
 /**
@@ -7359,7 +7385,7 @@ void MainWindow::on_action_Reset_note_text_size_triggered() {
                             "Will be shown after "
                             "the font size is reset by 'Reset note text size'")
                              .arg(fontSize),
-                         3000);
+                         QStringLiteral("🔤️"), 3000);
 
     // Allow to update the preview if the zoom level of the note text edits change
     forceRegenerateNotePreview();
@@ -7373,6 +7399,16 @@ void MainWindow::on_noteFolderComboBox_currentIndexChanged(int index) {
     const NoteFolder noteFolder = NoteFolder::fetch(noteFolderId);
 
     if (noteFolder.isFetched()) {
+        if (!noteFolder.localPathExists()) {
+            QMessageBox::warning(
+                this, tr("Note folder does not exist!"),
+                tr("Note folder <b>%1</b> with path <b>%2</b> does not exist anymore!")
+                    .arg(noteFolder.getName(), noteFolder.getLocalPath()));
+            Utils::Gui::setComboBoxIndexByUserData(ui->noteFolderComboBox,
+                                                   NoteFolder::currentNoteFolderId());
+
+            return;
+        }
         changeNoteFolder(noteFolderId);
         resetBrokenTagNotesLinkFlag();
     }
@@ -7635,8 +7671,13 @@ QTreeWidgetItem *MainWindow::addTagToTagTreeWidget(QTreeWidgetItem *parent, cons
         linkCount = uniqueLinkedNoteIds.count();
     }
 
-    const QString toolTip =
+    QString toolTip =
         tr("Show all notes tagged with '%1' (%2)").arg(name, QString::number(linkCount));
+
+#ifdef QT_DEBUG
+    toolTip += QStringLiteral("<br />id: %1").arg(tag._id);
+#endif
+
     auto *item = new QTreeWidgetItem();
     item->setData(0, Qt::UserRole, tagId);
     item->setText(0, name);
@@ -8417,7 +8458,8 @@ void MainWindow::on_tagTreeWidget_customContextMenuRequested(const QPoint pos) {
                 if (tag.isFetched()) {
                     reloadTagTree();
                 } else {
-                    showStatusBarMessage(tr("Tag could not be created!"), 3000);
+                    showStatusBarMessage(tr("Tag could not be created!"), QStringLiteral("🏷️"),
+                                         3000);
                 }
             }
         }
@@ -8652,7 +8694,7 @@ void MainWindow::moveSelectedTagsToTagId(int tagId) {
         if (tag.isFetched()) {
             if (tag.hasChild(tagId) || (id == tagId)) {
                 showStatusBarMessage(tr("Cannot move tag '%1' to this tag").arg(tag.getName()),
-                                     3000);
+                                     QStringLiteral("🏷️"), 3000);
             } else {
                 tagList << tag;
             }
@@ -8694,7 +8736,8 @@ void MainWindow::moveSelectedTagsToTagId(int tagId) {
                 }
             }
 
-            showStatusBarMessage(tr("Moved tag '%1' to new tag").arg(tag.getName()), 3000);
+            showStatusBarMessage(tr("Moved tag '%1' to new tag").arg(tag.getName()),
+                                 QStringLiteral("🏷️"), 3000);
         }
 
         reloadCurrentNoteTags();
@@ -8871,6 +8914,7 @@ void MainWindow::moveSelectedNotesToNoteSubFolder(const NoteSubFolder &noteSubFo
         _noteExternallyRemovedCheckEnabled = false;
 
         const auto selectedItems = ui->noteTreeWidget->selectedItems();
+        bool forceReload = false;
         for (QTreeWidgetItem *item : selectedItems) {
             if (item->data(0, Qt::UserRole + 1) != NoteType) {
                 continue;
@@ -8913,7 +8957,6 @@ void MainWindow::moveSelectedNotesToNoteSubFolder(const NoteSubFolder &noteSubFo
                 // tag the note again
                 for (const Tag &tag : tags) {
                     tag.linkToNote(note);
-                    //                    tag.linkToNote(note);
                 }
 
                 // handle the replacing of all note links from other notes
@@ -8921,6 +8964,7 @@ void MainWindow::moveSelectedNotesToNoteSubFolder(const NoteSubFolder &noteSubFo
                 if (note.handleNoteMoving(oldNote)) {
                     // reload the current note if we had to change it
                     reloadCurrentNoteByNoteId(true);
+                    forceReload = true;
                 }
 
                 // re-link images
@@ -8941,13 +8985,20 @@ void MainWindow::moveSelectedNotesToNoteSubFolder(const NoteSubFolder &noteSubFo
         if (noteSubFolderCount > 0) {
             // for some reason this only works with a small delay, otherwise
             // not all changes will be recognized
-            QTimer::singleShot(150, this, SLOT(buildNotesIndexAndLoadNoteDirectoryList()));
+            QTimer::singleShot(150, this, [this, forceReload] {
+                // If the outgoing links to other notes were changed, we have to really reload the note folder
+                if (forceReload) {
+                    buildNotesIndexAndLoadNoteDirectoryList(true, true);
+                } else {
+                    buildNotesIndexAndLoadNoteDirectoryList();
+                }
+            });
         }
 
         showStatusBarMessage(
             tr("%n note(s) were moved to note subfolder \"%2\"", "", noteSubFolderCount)
                 .arg(noteSubFolder.getName()),
-            5000);
+            QStringLiteral("📁"), 5000);
 
         // wait some time to enable the check again to prevent troubles on macOS
         QTimer::singleShot(4000, this, SLOT(enableNoteExternallyRemovedCheck()));
@@ -9038,7 +9089,7 @@ void MainWindow::copySelectedNotesToNoteSubFolder(const NoteSubFolder &noteSubFo
         showStatusBarMessage(
             tr("%n note(s) were copied to note subfolder \"%2\"", "", noteSubFolderCount)
                 .arg(noteSubFolder.getName()),
-            5000);
+            QStringLiteral("📁"), 5000);
     }
 }
 
@@ -9136,7 +9187,7 @@ void MainWindow::on_actionSelect_note_folder_triggered() {
  */
 void MainWindow::on_actionReload_scripting_engine_triggered() {
     ScriptingService::instance()->reloadEngine();
-    showStatusBarMessage(tr("The scripting engine was reloaded"), 3000);
+    showStatusBarMessage(tr("The scripting engine was reloaded"), QStringLiteral("🔧"), 3000);
     forceRegenerateNotePreview();
 }
 
@@ -11188,7 +11239,7 @@ void MainWindow::automaticScriptUpdateCheck() {
     // Show a message once if no script update were found
     // We need to do that in a slot, because you can't use a timer in a separate thread
     QObject::connect(dialog, &ScriptRepositoryDialog::noUpdateFound, this, [this, dialog]() {
-        showStatusBarMessage(tr("No script updates were found"), 3000);
+        showStatusBarMessage(tr("No script updates were found"), QStringLiteral("🔧"), 3000);
         delete (dialog);
     });
 
@@ -11200,7 +11251,7 @@ void MainWindow::automaticScriptUpdateCheck() {
         }
 
         _scriptUpdateFound = true;
-        showStatusBarMessage(tr("A script update was found!"), 4000);
+        showStatusBarMessage(tr("A script update was found!"), QStringLiteral("🔧"), 4000);
         delete (dialog);
 
         if (Utils::Gui::question(this, tr("Script updates"),
@@ -11467,7 +11518,7 @@ void MainWindow::on_actionCopy_headline_triggered() {
         QClipboard *clipboard = QApplication::clipboard();
         clipboard->setText(headline);
         showStatusBarMessage(tr("Note headline '%1' was copied to the clipboard").arg(headline),
-                             3000);
+                             QStringLiteral("📋"), 3000);
     }
 }
 
@@ -11954,6 +12005,8 @@ QAction *MainWindow::autocompleteAction() { return ui->actionAutocomplete; }
 
 QAction *MainWindow::splitNoteAtPosAction() { return ui->actionSplit_note_at_cursor_position; }
 
+QAction *MainWindow::findNoteAction() { return ui->action_Find_note; }
+
 QList<QAction *> MainWindow::customTextEditActions() { return _noteTextEditContextMenuActions; }
 
 void MainWindow::on_actionToggle_Always_on_top_triggered() {
@@ -11996,7 +12049,8 @@ void MainWindow::on_actionCopy_path_to_note_to_clipboard_triggered() {
 
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(path);
-    showStatusBarMessage(tr("Note path '%1' was copied to the clipboard").arg(path), 3000);
+    showStatusBarMessage(tr("Note path '%1' was copied to the clipboard").arg(path),
+                         QStringLiteral("📋"), 3000);
 }
 
 void MainWindow::on_actionMove_up_in_subfolder_list_triggered() {

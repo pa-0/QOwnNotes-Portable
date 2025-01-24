@@ -177,14 +177,6 @@
 <translation>Gujarati</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>Portugees (Braziliaans)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>Portugees</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>Deens</translation>
 </message>
@@ -431,6 +423,14 @@
 <message>
 <source>Persian</source>
 <translation>Perzisch</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation>Portugees (Braziliaans)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation>Portugees</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1469,8 +1469,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>Koppel een URL of notitie</translation>
+<source>Link to a URL or note</source>
+<translation>Koppeling naar een URL of notitie</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1663,7 +1663,7 @@
 </message>
 <message>
 <source>Headings</source>
-<translation>Kopen</translation>
+<translation>Koppen</translation>
 </message>
 <message>
 <source>Backlinks</source>
@@ -1708,10 +1708,6 @@
 <message>
 <source>&amp;Quit</source>
 <translation>&amp;Afsluiten</translation>
-</message>
-<message>
-<source>&amp;Find note</source>
-<translation>Vind notitie</translation>
 </message>
 <message>
 <source>&amp;Remove current note</source>
@@ -1911,6 +1907,10 @@
 <translation>Notitiemappen / submappen instellen</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation>Tekst in notities &amp;zoeken</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>Over &amp;QOwnNotes…</translation>
 </message>
@@ -2093,10 +2093,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>Notitielijst onder label deelvenster weergeven</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>Vind notities in alle labels / submappen</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2451,6 +2447,10 @@
 <translation>Doneren</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation>Tekst in notities in alle tags/submappen zoeken</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>Importeer notities van Evernote</translation>
 </message>
@@ -2729,6 +2729,14 @@ Als de prullenbak is ingeschakeld op de server van uw ownCloud moet je in staat 
 <message>
 <source>Saving temporary image</source>
 <translation>tijdelijke afbeelding opslaan</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation>Map met notities bestaat niet!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation>Map met notites &lt;b&gt;%1&lt;/b&gt; met pad &lt;b&gt;%2&lt;/b&gt; bestaat niet meer!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3321,7 +3329,7 @@ Als de prullenbak is ingeschakeld op de server van uw ownCloud moet je in staat 
 </message>
 <message>
 <source>Show %1 panel</source>
-<translation>Toon %1</translation>
+<translation>Paneel %1 weergeven</translation>
 </message>
 <message>
 <source>Show %1</source>
@@ -3610,16 +3618,16 @@ Als de prullenbak is ingeschakeld op de server van uw ownCloud moet je in staat 
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>notities weergeven in de map '%1' (%2)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>Alle notities</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>Toon notities uit alle submappen van notities (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation>Notities weergeven in map '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -3874,6 +3882,13 @@ Als de prullenbak is ingeschakeld op de server van uw ownCloud moet je in staat 
 <numerusform>Er is een wijziging van het notitiepad gedetecteerd. Wilt u alle exemplaren van &lt;strong&gt;%1&lt;/strong&gt; links vervangen door &lt;strong&gt;%2&lt;/strong&gt; en links met bestandsnaam &lt;strong&gt;%3&lt;/strong&gt; door &lt;strong&gt;%4&lt;/strong &gt; in &lt;strong&gt;%n&lt;/strong&gt; notitiebestand?</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation>
+<numerusform>Verandering van het notitiepad gedetecteerd. Wil je alle uitgaande links vervangen door &lt;strong&gt;%n&lt;/strong&gt; notitiebestand(en)?</numerusform>
+<numerusform>Verandering van het notitiepad gedetecteerd. Wil je alle uitgaande links vervangen door &lt;strong&gt;%n&lt;/strong&gt; notitiebestanden?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>Afbeeldingsbestand bestaat</translation>
@@ -3914,10 +3929,6 @@ Als de prullenbak is ingeschakeld op de server van uw ownCloud moet je in staat 
 <translation>Dubbelklik om de notitie op het tabblad te plakken</translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;laatst bewerkt: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;pad: %1</translation>
 </message>
@@ -3936,6 +3947,10 @@ Als de prullenbak is ingeschakeld op de server van uw ownCloud moet je in staat 
 <message>
 <source>Light mode detected</source>
 <translation>Lichtmodus gedetecteerd</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;laatst gewijzigd: %2&lt;br /&gt;bestandsgrootte: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5605,6 +5620,14 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>Verwijder automatisch volgspaties in de notitietekst</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation>Notities die groter zijn dan dit, worden niet weergegeven in de notitielijst</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation>Maximale bestandsgrootte van notities:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation>Scriptrepository doorzoeken op AI-integratiescripts</translation>
 </message>
@@ -6940,6 +6963,14 @@ Je notities zullen intact blijven!</translation>
 <translation>Toon alleen verweesde bijlagen</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation>Alleen bijlagen weergeven die in de huidige notitie worden gebruikt</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>Alleen weergeven van de huidige notitie</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>Voeg geselecteerde bijlagen toe aan de huidige notitie</translation>
 </message>
@@ -7084,6 +7115,14 @@ Je notities zullen intact blijven!</translation>
 <message>
 <source>Refresh</source>
 <translation>Vernieuwen</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation>Alleen afbeeldingen weergeven die in de huidige notitie worden gebruikt</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>Alleen weergeven van de huidige notitie</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7261,6 +7300,21 @@ Je notities zullen intact blijven!</translation>
 <message>
 <source>New tag</source>
 <translation>Nieuw label</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation>Tekstuele verschillen</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation>Verschillen:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation>Verschil accepteren?</translation>
 </message>
 </context>
 <context>
@@ -7965,6 +8019,10 @@ Dit kan niet ongedaan worden gemaakt!</translation>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation>Geeft hulp weer bij opdrachtregelopties.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>De toepassing wordt uitgevoerd in de draagbare modus.</translation>

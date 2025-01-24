@@ -4,7 +4,7 @@
 
 También puede crear QOwnNotes usted mismo a partir del código fuente.
 
-Descarga el código directamente desde el repositorio git:
+Obtenga el código directamente desde el repositorio de git:
 
 ```bash
 git clone https://github.com/pbek/QOwnNotes.git -b release
@@ -12,35 +12,50 @@ cd QOwnNotes
 git submodule update --init
 ```
 
-For debugging, it's easiest to use QtCreator. When downloading [Qt Creator](https://www.qt.io/download-qt-installer-oss), you will also need the package `qtwebsockets` to build QOwnNotes with Qt6. If you build under Windows, you want to stick to *MinGw 64-bit*. On Linux, you most likely have a package for QtCreator in your repository.
+Para la depuración, es más fácil usar QtCreator. Al descargar [Qt Creator](https://www.qt.io/download-qt-installer-oss), también necesitará el paquete `qtwebsockets` para construir QOwnNotes con Qt6. Si lo construye en Windows, querrá ceñirse a *MinGw 64-bit*. En Linux, lo más probable es que tenga un paquete para QtCreator en su repositorio.
 
-Afterward open the project file `src/QOwnNotes.pro` and click on **Build** / **Build Project QOwnNotes**.
+Posteriormente, abra el archivo de proyecto `src/QOwnNotes.pro` y haga clic en **Construir** / **Construir Proyecto QOwnNotes**.
 
-If you know what you are doing, you can also build QOwnNotes directly in your terminal:
+Si sabe lo que está haciendo, también puede construir QOwnNotes directamente desde su terminal:
 
 ```bash
 cd src
 
-# build binary translation files if you want another language than English
+# construir los archivos binarios de traducción si desea algún idioma distinto al inglés
 lrelease QOwnNotes.pro
 
-# prepare build process and build the application
+# preparar el proceso de construcción y construir la aplicación
 qmake
 make
 ```
 
-Please feel free to contribute source code to this project, make suggestions or report troubles on the [QOwnNotes issues page](https://github.com/pbek/QOwnNotes/issues).
+No dude en contribuir con el código fuente a este proyecto, realizar sugerencias o informar problemas en la [página de problemas de QOwnNotes](https://github.com/pbek/QOwnNotes/issues).
 
-Visit [QOwnNotes on GitHub](https://github.com/pbek/QOwnNotes).
+Visitar [QOwnNotes en GitHub](https://github.com/pbek/QOwnNotes).
 
 ::: tip
-If you want to contribute source code to the project please make your pull requests to the  `main` branch.
+Si desea contribuir código fuente al proyecto, por favor haga sus pull requests en la rama `main`.
 :::
 
 ## Archivo fuente
 
-You will find source archives of QOwnNotes on [QOwnNotes source archive](https://github.com/pbek/QOwnNotes/releases).
+Encontrará los archivos fuente de QOwnNotes en el [archivo fuente de QOwnNotes](https://github.com/pbek/QOwnNotes/releases).
 
-The source archives will be accessible like that:
+Los archivos fuente serán accesibles de esta forma:
 
 `https://github.com/pbek/QOwnNotes/releases/download/v23.7.0/qownnotes-23.7.0.tar.xz`
+
+## Construyendo con Nix
+
+Si tiene el [gestos de paquetes de Nix](https://nixos.org/download/) disponible puede simplemente clonar el código fuente con git-clone, como se explicó anteriormente, y construirlo con:
+
+```bash
+# Abrir nix-shell para obtener todas las herramientas necesarias
+nix-shell
+
+# Construir la aplicación
+just nix-build
+
+# Ejecutar la aplicación construida
+just nix-run
+```

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 Patrizio Bekerle -- <patrizio@bekerle.com>
+ * Copyright (c) 2014-2025 Patrizio Bekerle -- <patrizio@bekerle.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1196,7 +1196,7 @@ QDataStream &Utils::Misc::dataStreamWrite(QDataStream &os, const QPrinter &print
     os << margins.left() << margins.top() << margins.right() << margins.bottom();
 
     Q_ASSERT_X(os.status() == QDataStream::Ok, __FUNCTION__,
-               QString("Stream status = %1").arg(os.status()).toStdString().c_str());
+               QStringLiteral("Stream status = %1").arg(os.status()).toStdString().c_str());
     return os;
 }
 
@@ -1254,7 +1254,7 @@ QDataStream &Utils::Misc::dataStreamRead(QDataStream &is, QPrinter &printer) {
     printer.setPageMargins(margins, QPageLayout::Unit::Millimeter);
 
     Q_ASSERT_X(is.status() == QDataStream::Ok, __FUNCTION__,
-               QString("Stream status = %1").arg(is.status()).toStdString().c_str());
+               QStringLiteral("Stream status = %1").arg(is.status()).toStdString().c_str());
 
     return is;
 }
@@ -1505,11 +1505,11 @@ QString Utils::Misc::toHumanReadableByteSize(qint64 size) {
 
     // Handle special case for bytes
     if (unitIndex == 0) {
-        return QString("%1 %2").arg(size).arg(units[unitIndex]);
+        return QStringLiteral("%1 %2").arg(size).arg(units[unitIndex]);
     }
 
     // Use QString::number for better performance and more control
-    return QString("%1 %2").arg(QString::number(num, 'f', 2), units[unitIndex]);
+    return QStringLiteral("%1 %2").arg(QString::number(num, 'f', 2), units[unitIndex]);
 }
 
 /**
@@ -1795,7 +1795,7 @@ QString Utils::Misc::generateDebugInformation(bool withGitHubLineBreaks) {
                                                   QDir::toNativeSeparators(script.getScriptPath()),
                                                   withGitHubLineBreaks);
             output += prepareDebugInformationLine(QStringLiteral("variablesJson"),
-                                                  script.getSettingsVariablesJson(),
+                                                  script.getSettingsVariablesJson(true),
                                                   withGitHubLineBreaks);
             if (script.isScriptFromRepository()) {
                 ScriptInfoJson infoJson = script.getScriptInfoJson();
@@ -1946,7 +1946,7 @@ void Utils::Misc::transformNextcloudPreviewImages(QString &html, int maxImageWid
         QRegularExpressionMatch match = i.next();
         const QString imageTag = match.captured(0);
         QString inlineImageTag;
-        int imageWidth;
+        int imageWidth = maxImageWidth;
         ExternalImageHashItem hashItem;
 
         if (externalImageHash->contains(imageTag)) {
@@ -1962,7 +1962,8 @@ void Utils::Misc::transformNextcloudPreviewImages(QString &html, int maxImageWid
         }
 
         imageWidth = std::min(maxImageWidth, imageWidth);
-        inlineImageTag.replace("/>", QString("width=\"%1\"/>").arg(QString::number(imageWidth)));
+        inlineImageTag.replace("/>",
+                               QStringLiteral("width=\"%1\"/>").arg(QString::number(imageWidth)));
 
         html.replace(imageTag, inlineImageTag);
     }
@@ -1985,7 +1986,7 @@ void Utils::Misc::transformRemotePreviewImages(QString &html, int maxImageWidth,
         QRegularExpressionMatch match = i.next();
         QString imageTag = match.captured(0);
         QString inlineImageTag;
-        int imageWidth;
+        int imageWidth = maxImageWidth;
         ExternalImageHashItem hashItem;
 
         if (externalImageHash->contains(imageTag)) {
@@ -2000,7 +2001,8 @@ void Utils::Misc::transformRemotePreviewImages(QString &html, int maxImageWidth,
         }
 
         imageWidth = std::min(maxImageWidth, imageWidth);
-        inlineImageTag.replace(">", QString("width=\"%1\">").arg(QString::number(imageWidth)));
+        inlineImageTag.replace(">",
+                               QStringLiteral("width=\"%1\">").arg(QString::number(imageWidth)));
         html.replace(imageTag, inlineImageTag);
     }
 }

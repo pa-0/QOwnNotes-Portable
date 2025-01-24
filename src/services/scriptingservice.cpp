@@ -34,6 +34,7 @@ QT_WARNING_DISABLE_GCC("-Wmismatched-new-delete")
 #include "api/noteapi.h"
 #include "api/notesubfolderapi.h"
 #include "api/tagapi.h"
+#include "cryptoservice.h"
 #include "entities/notesubfolder.h"
 #include "services/settingsservice.h"
 
@@ -43,6 +44,7 @@ QT_WARNING_DISABLE_GCC("-Wmismatched-new-delete")
 #include <QInputDialog>
 #include <QMessageBox>
 
+#include "dialogs/textdiffdialog.h"
 #include "openaiservice.h"
 #include "widgets/qownnotesmarkdowntextedit.h"
 #endif
@@ -167,7 +169,6 @@ void ScriptingService::initComponent(const Script &script) {
 QList<QVariant> ScriptingService::registerSettingsVariables(QObject *object, const Script &script) {
     // registerSettingsVariables will override the settingsVariables property
     if (methodExistsForObject(object, QStringLiteral("registerSettingsVariables()"))) {
-        QVariant variables;
         QMetaObject::invokeMethod(object, "registerSettingsVariables");
     }
 
@@ -198,6 +199,22 @@ QList<QVariant> ScriptingService::registerSettingsVariables(QObject *object, con
 
                 if (jsonObject.value(identifier).isUndefined()) {
                     value = variableMap[QStringLiteral("default")].toBool();
+                }
+
+                object->setProperty(identifier.toUtf8(), value);
+            } else if (type == QStringLiteral("string-secret")) {
+                QString value;
+                // The secret identifier is the identifier with a "!" in front (so we can mask it in
+                // the settings dump)
+                const QString secretIdentifier = QStringLiteral("!") + identifier;
+
+                if (!jsonObject.value(secretIdentifier).isUndefined()) {
+                    value = jsonObject.value(secretIdentifier).toString();
+
+                    // Decrypt the value if the value is not empty
+                    if (!value.isEmpty()) {
+                        value = CryptoService::instance()->decryptToString(value);
+                    }
                 }
 
                 object->setProperty(identifier.toUtf8(), value);
@@ -2133,6 +2150,36 @@ QString ScriptingService::inputDialogGetMultiLineText(const QString &title, cons
 }
 
 /**
+ * Opens a dialog to show the differences between two texts and lets the user edit the result
+ *
+ * @param title {QString} title of the dialog
+ * @param label {QString} label text of the dialog
+ * @param text1 {QString} first text
+ * @param text2 {QString} second text
+ * @return
+ */
+QString ScriptingService::textDiffDialog(const QString &title, const QString &label,
+                                         const QString &text1, const QString &text2) {
+    MetricsService::instance()->sendVisitIfEnabled(QStringLiteral("scripting/") %
+                                                   QString(__func__));
+
+#ifndef INTEGRATION_TESTS
+    auto dialog = new TextDiffDialog(nullptr, title, label, text1, text2);
+    dialog->exec();
+    auto accepted = dialog->resultAccepted();
+    auto text = dialog->resultText();
+
+    return accepted ? text : QLatin1String("");
+#else
+    Q_UNUSED(title)
+    Q_UNUSED(label)
+    Q_UNUSED(text1)
+    Q_UNUSED(text2)
+    return QString();
+#endif
+}
+
+/**
  * Stores a persistent variable
  * These variables are accessible globally over all scripts
  * Please use a meaningful prefix in your key like
@@ -2406,8 +2453,8 @@ void ScriptingService::onScriptThreadDone(ScriptThread *thread) {
  * @return {QString} the cache dir path
  */
 QString ScriptingService::cacheDir(const QString &subDir) const {
-    QString cacheDir =
-        QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QString("/scripts/");
+    QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) +
+                       QStringLiteral("/scripts/");
 
     if (!subDir.isEmpty()) {
         cacheDir = QDir::toNativeSeparators(cacheDir + subDir);
@@ -2428,8 +2475,8 @@ QString ScriptingService::cacheDir(const QString &subDir) const {
  * @return {bool} true on success
  */
 bool ScriptingService::clearCacheDir(const QString &subDir) const {
-    QString cacheDir =
-        QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QString("/scripts/");
+    QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) +
+                       QStringLiteral("/scripts/");
 
     if (!subDir.isEmpty()) {
         cacheDir = QDir::toNativeSeparators(cacheDir + subDir);

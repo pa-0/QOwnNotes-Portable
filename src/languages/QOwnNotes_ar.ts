@@ -179,14 +179,6 @@
 <translation>الكجراتية</translation>
 </message>
 <message>
-<source>Portugese (Brazilian)</source>
-<translation>البرتغالية (البرازيلية)</translation>
-</message>
-<message>
-<source>Portugese</source>
-<translation>البرتغالية</translation>
-</message>
-<message>
 <source>Danish</source>
 <translation>الدانماركية</translation>
 </message>
@@ -433,6 +425,14 @@
 <message>
 <source>Persian</source>
 <translation>اللغة الفارسية</translation>
+</message>
+<message>
+<source>Portuguese (Brazilian)</source>
+<translation>البرتغالية (البرازيلية)</translation>
+</message>
+<message>
+<source>Portuguese</source>
+<translation>البرتغالية</translation>
 </message>
 <message>
 <source>Romanian</source>
@@ -1493,8 +1493,8 @@
 <context>
 <name>LinkDialog</name>
 <message>
-<source>Link an url or note</source>
-<translation>ربط عنوان url أو ملاحظة</translation>
+<source>Link to a URL or note</source>
+<translation type="unfinished">Link to a URL or note</translation>
 </message>
 <message>
 <source>Enter URL</source>
@@ -1750,10 +1750,6 @@
 <translation>&amp;خروج</translation>
 </message>
 <message>
-<source>&amp;Find note</source>
-<translation>ا&amp;عثر على ملاحظة</translation>
-</message>
-<message>
 <source>&amp;Remove current note</source>
 <translation>اح&amp;ذف الملاحظة الحالية</translation>
 </message>
@@ -1951,6 +1947,10 @@
 <translation>إعداد مجلدات الملاحظات أو المجلدات الفرعية</translation>
 </message>
 <message>
+<source>&amp;Find text in notes</source>
+<translation>ا&amp;بحث عن نص في الملاحظات</translation>
+</message>
+<message>
 <source>About &amp;QOwnNotes…</source>
 <translation>حول &amp;QOwnNotes…</translation>
 </message>
@@ -2133,10 +2133,6 @@
 <message>
 <source>Show note list under tag panel</source>
 <translation>إظهار قائمة الملاحظات أسفل لوحة الوسوم</translation>
-</message>
-<message>
-<source>Find notes in all tags / subfolders</source>
-<translation>البحث عن الملاحظات في جميع الوسوم والمجلدات الفرعية</translation>
 </message>
 <message>
 <source>Import notes from text files</source>
@@ -2493,6 +2489,10 @@
 <translation>تبرّع</translation>
 </message>
 <message>
+<source>Find text in notes in all tags / subfolders</source>
+<translation>البحث عن نص في جميع الوسوم والمجلدات الفرعية</translation>
+</message>
+<message>
 <source>Import notes from Evernote</source>
 <translation>استيراد ملاحظات من Evernote</translation>
 </message>
@@ -2824,6 +2824,14 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <message>
 <source>Saving temporary image</source>
 <translation>حفظ الصورة المؤقته</translation>
+</message>
+<message>
+<source>Note folder does not exist!</source>
+<translation>مجلد الملاحظات غير موجود!</translation>
+</message>
+<message>
+<source>Note folder &lt;b&gt;%1&lt;/b&gt; with path &lt;b&gt;%2&lt;/b&gt; does not exist anymore!</source>
+<translation>مجلد الملاحظات &lt;b&gt;%1&lt;/b&gt; الذي مساره &lt;b&gt;%2&lt;/b&gt; لم يعد موجودًا!</translation>
 </message>
 <message>
 <source>Ln %1, Col %2</source>
@@ -3756,16 +3764,16 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <context>
 <name>NoteSubFolderTree</name>
 <message>
-<source>show notes in folder '%1' (%2)</source>
-<translation>أظهر الملاحظات التي في مجلد «‪%1‬» (‫%2‬)</translation>
-</message>
-<message>
 <source>All notes</source>
 <translation>جميع الملاحظات</translation>
 </message>
 <message>
 <source>Show notes from all note subfolders (%1)</source>
 <translation>إظهار الملاحظات من جميع المجلدات الفرعية للملاحظات (%1)</translation>
+</message>
+<message>
+<source>Show notes in folder '%1' (%2)</source>
+<translation type="unfinished">Show notes in folder '%1' (%2)</translation>
 </message>
 <message>
 <source>Show notes in note root folder (%1)</source>
@@ -4029,6 +4037,17 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <numerusform>تم اكتشاف تغيير في مسار الملاحظة. هل ترغب في استبدال كل تكرارات روابط &lt;strong&gt;%1&lt;/strong&gt; بـ &lt;strong&gt;%2&lt;/strong&gt; والروابط التي تحمل اسم الملف &lt;strong&gt;%3&lt;/strong&gt; بـ &lt;strong&gt;%4&lt;/ strong &gt; في &lt;strong&gt;%n&lt;/strong&gt; ملفات الملاحظات؟</numerusform>
 </translation>
 </message>
+<message numerus="yes">
+<source>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</source>
+<translation type="unfinished">
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+<numerusform>A change of the note path was detected. Would you like to replace all outgoing links to &lt;strong&gt;%n&lt;/strong&gt; note file(s)?</numerusform>
+</translation>
+</message>
 <message>
 <source>Image file exists</source>
 <translation>ملف الصورة موجود</translation>
@@ -4075,10 +4094,6 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 </translation>
 </message>
 <message>
-<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2</source>
-<translation>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;آخر تعديل: %2</translation>
-</message>
-<message>
 <source>&lt;br /&gt;path: %1</source>
 <translation>&lt;br /&gt;المسار: %1</translation>
 </message>
@@ -4097,6 +4112,10 @@ If the trash is enabled on your ownCloud server you should be able to restore th
 <message>
 <source>Light mode detected</source>
 <translation>تم اكتشاف الوضع المضيء</translation>
+</message>
+<message>
+<source>&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</source>
+<translation type="unfinished">&lt;strong&gt;%1&lt;/strong&gt;&lt;br /&gt;last modified: %2&lt;br /&gt;file size: %3</translation>
 </message>
 <message>
 <source>Your Linux system seems to use the dark mode. Do you also want to turn on dark mode in QOwnNotes?</source>
@@ -5806,6 +5825,14 @@ Just test yourself if you get sync conflicts and set a higher value if so.</sour
 <translation>إزالة المسافات الزائدة بعد نهاية السطر من نص الملاحظة تلقائيًا</translation>
 </message>
 <message>
+<source>Notes larger than this will not be shown in the note list</source>
+<translation>الملاحظات التي حجم ملفها أكبر من هذا لن تظهر في قائمة الملاحظات</translation>
+</message>
+<message>
+<source>Maximum note file size:</source>
+<translation>الحجم الأقصى لملف الملاحظة:</translation>
+</message>
+<message>
 <source>Search script repository for AI integration scripts</source>
 <translation>ابحث عن بُريمجات الذكاء المصطنع في مستودع البريمجات</translation>
 </message>
@@ -7138,6 +7165,14 @@ Your notes will stay intact!</source>
 <translation>إظهار المرفقات اليتيمة فقط</translation>
 </message>
 <message>
+<source>Only show attachments that are used in the current note</source>
+<translation>أظهر فقط المرفقات المستعملة في الملاحظة الحالية</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>أظهر فقط من الملاحظة الحالية</translation>
+</message>
+<message>
 <source>Add selected attachments to the current note</source>
 <translation>أضف المرفقات المحددة إلى الملاحظة الحالية</translation>
 </message>
@@ -7286,6 +7321,14 @@ Your notes will stay intact!</source>
 <message>
 <source>Refresh</source>
 <translation>إنعاش</translation>
+</message>
+<message>
+<source>Only show images that are used in the current note</source>
+<translation>أظهر فقط الصور المستعملة في الملاحظة الحالية</translation>
+</message>
+<message>
+<source>Only show from current note</source>
+<translation>أظهر فقط من الملاحظة الحالية</translation>
 </message>
 <message>
 <source>Used in notes:</source>
@@ -7467,6 +7510,21 @@ Your notes will stay intact!</source>
 <message>
 <source>New tag</source>
 <translation>وسم جديد</translation>
+</message>
+</context>
+<context>
+<name>TextDiffDialog</name>
+<message>
+<source>Text difference</source>
+<translation>اختلافات النص</translation>
+</message>
+<message>
+<source>Differences:</source>
+<translation>الاختلافات:</translation>
+</message>
+<message>
+<source>Accept change?</source>
+<translation>قبول التغييرات؟</translation>
 </message>
 </context>
 <context>
@@ -8181,6 +8239,10 @@ This cannot be undone!</source>
 </context>
 <context>
 <name>main</name>
+<message>
+<source>Displays help on commandline options.</source>
+<translation type="unfinished">Displays help on commandline options.</translation>
+</message>
 <message>
 <source>Runs the application in portable mode.</source>
 <translation>يُشغل التطبيق في الوضعية المحمولة.</translation>
